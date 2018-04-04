@@ -325,9 +325,15 @@
     #container .article .article-title { padding: 0; }
 </style>
 
+<% if (page.path === "tags/index.html"){ %>
+    <!-- Tag Cloud Page -->
+    <%- partial('tag-cloud-page') %>
+<% } %>
 
-
-
+<% if (page.path === "categories/index.html"){ %>
+    <!-- categories Cloud Page -->
+    <%- partial('categories-cloud-page') %>
+<% } %>
           
         <p>一个励志的勘探员</p>
 <p>balabalabala</p>
