@@ -625,46 +625,7 @@ while count &lt;3:
 <li>输错三次后锁定账户<br>难点:</li>
 <li>涉及到Python对文件的操作增删改查</li>
 <li><p>判断和循环语句的嵌套使用</p>
-<h3 id="Python3-5对文件的操作"><a href="#Python3-5对文件的操作" class="headerlink" title="Python3.5对文件的操作"></a>Python3.5对文件的操作</h3><p>  open(‘test.txt’,’mode’,encoding=’xxx’)<br>第一个参数是文件的路径名；第三个参数的xxx那里是填入适当的编码格式，假如你的文件是gbk格式的，你打开的时候，为了防止出现乱码，你就得告诉函数，需要用什么格式打开。<br><table border="1" align="center" bordercolor="black" width="100%" height="100px"><br>  <tr align="left"></tr></table></p>
-<pre><code>&lt;th&gt;mode&lt;/th&gt;
-&lt;th&gt;说明&lt;/th&gt;
-</code></pre><p>  <br>  <tr align="left"></tr></p>
-<pre><code>&lt;td&gt;r&lt;/td&gt;
-&lt;td&gt;以只读方式打开文件。文件的指针将会放在文件的开头。这是默认模式。&lt;/td&gt;
-</code></pre><p>  <br>  <tr align="left"></tr></p>
-<pre><code>&lt;td&gt;rb&lt;/td&gt;
-&lt;td&gt;以二进制格式打开一个文件用于只读。文件指针将会放在文件的开头。这是默认模式。&lt;/td&gt;
-</code></pre><p>  <br>  <tr align="left"></tr></p>
-<pre><code>&lt;td&gt;r+&lt;/td&gt;
-&lt;td&gt;打开一个文件用于读写。文件指针将会放在文件的开头。&lt;/td&gt;
-</code></pre><p>  <br>  <tr align="left"></tr></p>
-<pre><code>&lt;td&gt;rb+&lt;/td&gt;
-&lt;td&gt;以二进制格式打开一个文件用于读写。文件指针将会放在文件的开头。&lt;/td&gt;
-</code></pre><p>  <br>  <tr align="left"></tr></p>
-<pre><code>&lt;td&gt;w&lt;/td&gt;
-&lt;td&gt;打开一个文件只用于写入。如果该文件已存在则将其覆盖。如果该文件不存在，创建新文件。&lt;/td&gt;
-</code></pre><p>  <br>  <tr align="left"></tr></p>
-<pre><code>&lt;td&gt;wb&lt;/td&gt;
-&lt;td&gt;以二进制格式打开一个文件只用于写入。如果该文件已存在则将其覆盖。如果该文件不存在，创建新文件。&lt;/td&gt;
-</code></pre><p>  <br>  <tr align="left"></tr></p>
-<pre><code>&lt;td&gt;w+&lt;/td&gt;
-&lt;td&gt;打开一个文件用于读写。如果该文件已存在则将其覆盖。如果该文件不存在，创建新文件。&lt;/td&gt;
-</code></pre><p>  <br>  <tr align="left"></tr></p>
-<pre><code>&lt;td&gt;wb+&lt;/td&gt;
-&lt;td&gt;以二进制格式打开一个文件用于读写。如果该文件已存在则将其覆盖。如果该文件不存在，创建新文件。&lt;/td&gt;
-</code></pre><p>  <br>  <tr align="left"></tr></p>
-<pre><code>&lt;td&gt;a&lt;/td&gt;
-&lt;td&gt;打开一个文件用于追加。如果该文件已存在，文件指针将会放在文件的结尾。&lt;/td&gt;
-</code></pre><p>  <br>  <tr align="left"></tr></p>
-<pre><code>&lt;td&gt;ab&lt;/td&gt;
-&lt;td&gt;以二进制格式打开一个文件用于追加。如果该文件已存在，文件指针将会放在文件的结尾。&lt;/td&gt;
-</code></pre><p>  <br>  <tr align="left"></tr></p>
-<pre><code>&lt;td&gt;a+&lt;/td&gt;
-&lt;td&gt;打开一个文件用于读写。如果该文件已存在，文件指针将会放在文件的结尾。文件打开时会是追加模式。如果该文件不存在，创建新文件用于读写。&lt;/td&gt;
-</code></pre><p>  <br>  <tr align="left"></tr></p>
-<pre><code>&lt;td&gt;ab+&lt;/td&gt;
-&lt;td&gt;以二进制格式打开一个文件用于追加。如果该文件已存在，文件指针将会放在文件的结尾。如果该文件不存在，创建新文件用于读写。&lt;/td&gt;
-</code></pre><p>  <br></p>
+<h3 id="Python3-5对文件的操作"><a href="#Python3-5对文件的操作" class="headerlink" title="Python3.5对文件的操作"></a>Python3.5对文件的操作</h3><p>  open(‘test.txt’,’mode’,encoding=’xxx’)<br>第一个参数是文件的路径名；第三个参数的xxx那里是填入适当的编码格式，假如你的文件是gbk格式的，你打开的时候，为了防止出现乱码，你就得告诉函数，需要用什么格式打开。<br><table border="1" align="center" bordercolor="black" width="100%" height="100px"><br><tr align="left"><br><th>mode</th><br><th>说明</th><br></tr><br><tr align="left"><br><td>r</td><br><td>以只读方式打开文件。文件的指针将会放在文件的开头。这是默认模式。</td><br></tr><br><tr align="left"><br><td>rb</td><br><td>以二进制格式打开一个文件用于只读。文件指针将会放在文件的开头。这是默认模式。</td><br></tr><br><tr align="left"><br><td>r+</td><br><td>打开一个文件用于读写。文件指针将会放在文件的开头。</td><br></tr><br><tr align="left"><br><td>rb+</td><br><td>以二进制格式打开一个文件用于读写。文件指针将会放在文件的开头。</td><br></tr><br><tr align="left"><br><td>w</td><br><td>打开一个文件只用于写入。如果该文件已存在则将其覆盖。如果该文件不存在，创建新文件。</td><br></tr><br><tr align="left"><br><td>wb</td><br><td>以二进制格式打开一个文件只用于写入。如果该文件已存在则将其覆盖。如果该文件不存在，创建新文件。</td><br></tr><br><tr align="left"><br><td>w+</td><br><td>打开一个文件用于读写。如果该文件已存在则将其覆盖。如果该文件不存在，创建新文件。</td><br></tr><br><tr align="left"><br><td>wb+</td><br><td>以二进制格式打开一个文件用于读写。如果该文件已存在则将其覆盖。如果该文件不存在，创建新文件。</td><br></tr><br><tr align="left"><br><td>a</td><br><td>打开一个文件用于追加。如果该文件已存在，文件指针将会放在文件的结尾。</td><br></tr><br><tr align="left"><br><td>ab</td><br><td>以二进制格式打开一个文件用于追加。如果该文件已存在，文件指针将会放在文件的结尾。</td><br></tr><br><tr align="left"><br><td>a+</td><br><td>打开一个文件用于读写。如果该文件已存在，文件指针将会放在文件的结尾。文件打开时会是追加模式。如果该文件不存在，创建新文件用于读写。</td><br></tr><br><tr align="left"><br><td>ab+</td><br><td>以二进制格式打开一个文件用于追加。如果该文件已存在，文件指针将会放在文件的结尾。如果该文件不存在，创建新文件用于读写。</td><br></tr><br></table></p>
 <h4 id="读操作"><a href="#读操作" class="headerlink" title="读操作"></a>读操作</h4><p>  f = open(‘fileTest.txt’, ‘r’)<br>  f = f.read()<br>  print(f)<br>read()一次性读取文件的全部内容，可以在read(size)里面传参，表示每次读取size个字节的内容。<br>readline() 每次读取文件一行的内容。<br>readlines()一次读取所有内容并按行返回 list。</p>
 <h4 id="写操作"><a href="#写操作" class="headerlink" title="写操作"></a>写操作</h4><p>只有调用close()方法时，操作系统才能保证把没有写入的数据全部写入磁盘：<br>  f = open(‘fileTest2.txt’,’w’)<br>  f.write(‘hello! It<code>s me!&#39;)
   f.close()
