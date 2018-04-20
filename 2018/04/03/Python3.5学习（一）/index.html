@@ -107,7 +107,7 @@
 <meta property="og:site_name" content="5iFish&#39;s Blog">
 <meta property="og:description" content="知识点简单的输入输出username = input(&amp;quot;username&amp;quot;) print(username) 整行打印三种方式:">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-04-19T08:34:35.616Z">
+<meta property="og:updated_time" content="2018-04-20T01:08:56.012Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python3.5学习（一）">
 <meta name="twitter:description" content="知识点简单的输入输出username = input(&amp;quot;username&amp;quot;) print(username) 整行打印三种方式:">
@@ -528,9 +528,21 @@ while count &lt;3:
 </ul>
 <h3 id="Python3-5对文件的操作"><a href="#Python3-5对文件的操作" class="headerlink" title="Python3.5对文件的操作"></a>Python3.5对文件的操作</h3><pre><code>open(‘test.txt’,’mode’,encoding=’xxx’)
 </code></pre><p>第一个参数是文件的路径名；第三个参数的xxx那里是填入适当的编码格式，假如你的文件是gbk格式的，你打开的时候，为了防止出现乱码，你就得告诉函数，需要用什么格式打开。</p>
-<table border="1" align="center" bordercolor="black" width="100%"><br>    <tr align="left"><br>        <th>mode</th><br>        <th>说明</th><br>    </tr><br>    <tr align="left"><br>    <td>r</td><br>    <td>以只读方式打开文件。文件的指针将会放在文件的开头。这是默认模式。</td><br>    </tr><br>    <tr align="left"><br>    <td>rb</td><br>    <td>以二进制格式打开一个文件用于只读。文件指针将会放在文件的开头。这是默认模式。</td><br>    </tr><br>    <tr align="left"><br>    <td>r+</td><br>    <td>打开一个文件用于读写。文件指针将会放在文件的开头。</td><br>    </tr><br>    <tr align="left"><br>    <td>rb+</td><br>    <td>以二进制格式打开一个文件用于读写。文件指针将会放在文件的开头。</td><br>    </tr><br>    <tr align="left"><br>    <td>w</td><br>    <td>打开一个文件只用于写入。如果该文件已存在则将其覆盖。如果该文件不存在，创建新文件。</td><br>    </tr><br>    <tr align="left"><br>    <td>wb</td><br>    <td>以二进制格式打开一个文件只用于写入。如果该文件已存在则将其覆盖。如果该文件不存在，创建新文件。</td><br>    </tr><br>    <tr align="left"><br>    <td>w+</td><br>    <td>打开一个文件用于读写。如果该文件已存在则将其覆盖。如果该文件不存在，创建新文件。</td><br>    </tr><br>    <tr align="left"><br>    <td>wb+</td><br>    <td>以二进制格式打开一个文件用于读写。如果该文件已存在则将其覆盖。如果该文件不存在，创建新文件。</td><br>    </tr><br>    <tr align="left"><br>    <td>a</td><br>    <td>打开一个文件用于追加。如果该文件已存在，文件指针将会放在文件的结尾。</td><br>    </tr><br>    <tr align="left"><br>    <td>ab</td><br>    <td>以二进制格式打开一个文件用于追加。如果该文件已存在，文件指针将会放在文件的结尾。</td><br>    </tr><br>    <tr align="left"><br>    <td>a+</td><br>    <td>打开一个文件用于读写。如果该文件已存在，文件指针将会放在文件的结尾。文件打开时会是追加模式。如果该文件不存在，创建新文件用于读写。</td><br>    </tr><br>    <tr align="left"><br>    <td>ab+</td><br>    <td>以二进制格式打开一个文件用于追加。如果该文件已存在，文件指针将会放在文件的结尾。如果该文件不存在，创建新文件用于读写。</td><br>    </tr><br></table>
-
-<h4 id="读操作"><a href="#读操作" class="headerlink" title="读操作"></a>读操作</h4><pre><code>f = open(&apos;fileTest.txt&apos;, &apos;r&apos;)
+<pre><code>| mode | 说明 |
+| :------ | :------ |
+| r | 以只读方式打开文件。文件的指针将会放在文件的开头。这是默认模式。 |
+| rb | 以二进制格式打开一个文件用于只读。文件指针将会放在文件的开头。这是默认模式。 |
+| r+ | 打开一个文件用于读写。文件指针将会放在文件的开头。 |
+| rb+ | 以二进制格式打开一个文件用于读写。文件指针将会放在文件的开头。 |
+| w | 打开一个文件只用于写入。如果该文件已存在则将其覆盖。如果该文件不存在，创建新文件。 |
+| wb | 以二进制格式打开一个文件只用于写入。如果该文件已存在则将其覆盖。如果该文件不存在，创建新文件。 |
+| w+ | 打开一个文件用于读写。如果该文件已存在则将其覆盖。如果该文件不存在，创建新文件。 |
+| wb+ | 以二进制格式打开一个文件用于读写。如果该文件已存在则将其覆盖。如果该文件不存在，创建新文件。 |
+| a | 打开一个文件用于追加。如果该文件已存在，文件指针将会放在文件的结尾。 |
+| ab | 以二进制格式打开一个文件用于追加。如果该文件已存在，文件指针将会放在文件的结尾。 |
+| a+ | 打开一个文件用于读写。如果该文件已存在，文件指针将会放在文件的结尾。文件打开时会是追加模式。如果该文件不存在，创建新文件用于读写。 |
+| ab+ | 以二进制格式打开一个文件用于追加。如果该文件已存在，文件指针将会放在文件的结尾。如果该文件不存在，创建新文件用于读写。 |
+</code></pre><h4 id="读操作"><a href="#读操作" class="headerlink" title="读操作"></a>读操作</h4><pre><code>f = open(&apos;fileTest.txt&apos;, &apos;r&apos;)
 f = f.read()
 print(f)
 </code></pre><p>read()一次性读取文件的全部内容，可以在read(size)里面传参，表示每次读取size个字节的内容。<br>readline() 每次读取文件一行的内容。<br>readlines()一次读取所有内容并按行返回 list。</p>
