@@ -107,10 +107,12 @@
 <meta property="og:site_name" content="5iFish&#39;s Blog">
 <meta property="og:description" content="知识点 列表 元组 字符串 字典 集合 文件操作 字符编码">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-07-12T12:50:38.540Z">
+<meta property="og:image" content="http://5ifish.me/2018/07/images/字符编码转化图.jpg">
+<meta property="og:updated_time" content="2018-07-12T13:19:19.831Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python3.5学习（二）">
 <meta name="twitter:description" content="知识点 列表 元组 字符串 字典 集合 文件操作 字符编码">
+<meta name="twitter:image" content="http://5ifish.me/2018/07/images/字符编码转化图.jpg">
 
 
 
@@ -378,7 +380,7 @@
               
                 <span class="post-meta-item-text">更新于：</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-07-12T20:50:38+08:00">2018-07-12</time>
+              <time title="更新于" itemprop="dateModified" datetime="2018-07-12T21:19:19+08:00">2018-07-12</time>
             
           </span>
 
@@ -973,7 +975,47 @@ for i in range(20):
     sys.stdout.write(&quot;#&quot;)
     sys.stdout.flush()
     time.sleep(0.5)
-</code></pre>
+</code></pre><hr>
+<h1 id="九、字符编码"><a href="#九、字符编码" class="headerlink" title="九、字符编码"></a>九、字符编码</h1><p><img src="../../images/字符编码转化图.jpg" alt="字符编码转换图"></p>
+<p>当编译语言使用系统默认编码(uft-8)时：</p>
+<pre><code># Author:ZT
+&apos;&apos;&apos;
+py程序代码的默认编码是utf-8
+py字符串是以unicode编码的
+encode()默认采用系统编码将Unicode编码成utf-8
+encode(&quot;gbk&quot;)编码成gbk
+&apos;&apos;&apos;
+import sys
+#打印出系统的默认编码
+print(sys.getdefaultencoding())
+s=&quot;哈哈&quot;
+#将Unicode编码成gbk
+s_gbk = s.encode(&quot;gbk&quot;)
+print(s_gbk)
+print(s.encode())
+#将gbk转换成utf-8
+#先解码成unicode,再编码成utf-8
+gbk_utf8 = s_gbk.decode(&quot;gbk&quot;).encode(&quot;utf-8&quot;)
+print(gbk_utf8)
+</code></pre><p>当编译语言使用gbk编码时：</p>
+<pre><code>#将编译语言设置为gbk编码
+#-*-coding:gbk-*-
+# Author:ZT
+&quot;&quot;&quot;
+python3中进行encode时自动转换成byte类型
+&quot;&quot;&quot;
+import sys
+#获取系统默认编码
+print(sys.getdefaultencoding())
+#保存到字符串的时候依旧是unicode编码
+s=&quot;你好&quot;
+#编码成gbk
+print(s.encode(&quot;gbk&quot;))
+print(s.encode(&quot;utf-8&quot;).decode(&quot;utf-8&quot;).encode(&quot;gb2312&quot;))
+#编码成utf-8-&gt;解码-&gt;编码成gb2312-&gt;解码，最终为unicode
+print(s.encode(&quot;utf-8&quot;).decode(&quot;utf-8&quot;).encode(&quot;gb2312&quot;).decode(&quot;gb2312&quot;))
+</code></pre><hr>
+<h1 id="十、作业"><a href="#十、作业" class="headerlink" title="十、作业"></a>十、作业</h1>
       
     </div>
 
@@ -1188,7 +1230,7 @@ for i in range(20):
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#知识点"><span class="nav-number">1.</span> <span class="nav-text">知识点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一、列表"><span class="nav-number">2.</span> <span class="nav-text">一、列表</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-增删改查"><span class="nav-number">2.1.</span> <span class="nav-text">1. 增删改查</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-切片"><span class="nav-number">2.2.</span> <span class="nav-text">2. 切片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-copy"><span class="nav-number">2.3.</span> <span class="nav-text">3. copy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-其他操作"><span class="nav-number">2.4.</span> <span class="nav-text">4. 其他操作</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、元组"><span class="nav-number">3.</span> <span class="nav-text">二、元组</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、实例一：购物车"><span class="nav-number">4.</span> <span class="nav-text">三、实例一：购物车</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四、字符串"><span class="nav-number">5.</span> <span class="nav-text">四、字符串</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#五、字典"><span class="nav-number">6.</span> <span class="nav-text">五、字典</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-创建字典"><span class="nav-number">6.1.</span> <span class="nav-text">1. 创建字典</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-增加"><span class="nav-number">6.2.</span> <span class="nav-text">2. 增加</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-修改"><span class="nav-number">6.3.</span> <span class="nav-text">3. 修改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-删除"><span class="nav-number">6.4.</span> <span class="nav-text">4. 删除</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-查询"><span class="nav-number">6.5.</span> <span class="nav-text">5. 查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-其他操作"><span class="nav-number">6.6.</span> <span class="nav-text">6. 其他操作</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#六、实例二：三级菜单"><span class="nav-number">7.</span> <span class="nav-text">六、实例二：三级菜单</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#七、集合"><span class="nav-number">8.</span> <span class="nav-text">七、集合</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-集合的创建"><span class="nav-number">8.1.</span> <span class="nav-text">1. 集合的创建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-集合运算"><span class="nav-number">8.2.</span> <span class="nav-text">2. 集合运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-集合的增删改查"><span class="nav-number">8.3.</span> <span class="nav-text">3. 集合的增删改查</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#八、文件操作"><span class="nav-number">9.</span> <span class="nav-text">八、文件操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-打开"><span class="nav-number">9.1.</span> <span class="nav-text">1. 打开</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-读"><span class="nav-number">9.2.</span> <span class="nav-text">2. 读</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-写"><span class="nav-number">9.3.</span> <span class="nav-text">3. 写</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-修改"><span class="nav-number">9.4.</span> <span class="nav-text">4. 修改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-例子"><span class="nav-number">9.5.</span> <span class="nav-text">5. 例子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-tell、seek"><span class="nav-number">9.6.</span> <span class="nav-text">6. tell、seek</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-其他功能"><span class="nav-number">9.7.</span> <span class="nav-text">7. 其他功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-制作进度条"><span class="nav-number">9.8.</span> <span class="nav-text">8. 制作进度条</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#知识点"><span class="nav-number">1.</span> <span class="nav-text">知识点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一、列表"><span class="nav-number">2.</span> <span class="nav-text">一、列表</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-增删改查"><span class="nav-number">2.1.</span> <span class="nav-text">1. 增删改查</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-切片"><span class="nav-number">2.2.</span> <span class="nav-text">2. 切片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-copy"><span class="nav-number">2.3.</span> <span class="nav-text">3. copy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-其他操作"><span class="nav-number">2.4.</span> <span class="nav-text">4. 其他操作</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、元组"><span class="nav-number">3.</span> <span class="nav-text">二、元组</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、实例一：购物车"><span class="nav-number">4.</span> <span class="nav-text">三、实例一：购物车</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四、字符串"><span class="nav-number">5.</span> <span class="nav-text">四、字符串</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#五、字典"><span class="nav-number">6.</span> <span class="nav-text">五、字典</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-创建字典"><span class="nav-number">6.1.</span> <span class="nav-text">1. 创建字典</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-增加"><span class="nav-number">6.2.</span> <span class="nav-text">2. 增加</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-修改"><span class="nav-number">6.3.</span> <span class="nav-text">3. 修改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-删除"><span class="nav-number">6.4.</span> <span class="nav-text">4. 删除</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-查询"><span class="nav-number">6.5.</span> <span class="nav-text">5. 查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-其他操作"><span class="nav-number">6.6.</span> <span class="nav-text">6. 其他操作</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#六、实例二：三级菜单"><span class="nav-number">7.</span> <span class="nav-text">六、实例二：三级菜单</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#七、集合"><span class="nav-number">8.</span> <span class="nav-text">七、集合</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-集合的创建"><span class="nav-number">8.1.</span> <span class="nav-text">1. 集合的创建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-集合运算"><span class="nav-number">8.2.</span> <span class="nav-text">2. 集合运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-集合的增删改查"><span class="nav-number">8.3.</span> <span class="nav-text">3. 集合的增删改查</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#八、文件操作"><span class="nav-number">9.</span> <span class="nav-text">八、文件操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-打开"><span class="nav-number">9.1.</span> <span class="nav-text">1. 打开</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-读"><span class="nav-number">9.2.</span> <span class="nav-text">2. 读</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-写"><span class="nav-number">9.3.</span> <span class="nav-text">3. 写</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-修改"><span class="nav-number">9.4.</span> <span class="nav-text">4. 修改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-例子"><span class="nav-number">9.5.</span> <span class="nav-text">5. 例子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-tell、seek"><span class="nav-number">9.6.</span> <span class="nav-text">6. tell、seek</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-其他功能"><span class="nav-number">9.7.</span> <span class="nav-text">7. 其他功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-制作进度条"><span class="nav-number">9.8.</span> <span class="nav-text">8. 制作进度条</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#九、字符编码"><span class="nav-number">10.</span> <span class="nav-text">九、字符编码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#十、作业"><span class="nav-number">11.</span> <span class="nav-text">十、作业</span></a></li></ol></div>
             
 
           </div>
