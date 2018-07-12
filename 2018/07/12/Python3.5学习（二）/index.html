@@ -107,7 +107,7 @@
 <meta property="og:site_name" content="5iFish&#39;s Blog">
 <meta property="og:description" content="知识点 列表 元组 字符串 字典 集合 文件操作 字符编码">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-07-12T06:45:21.450Z">
+<meta property="og:updated_time" content="2018-07-12T06:55:49.607Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python3.5学习（二）">
 <meta name="twitter:description" content="知识点 列表 元组 字符串 字典 集合 文件操作 字符编码">
@@ -378,7 +378,7 @@
               
                 <span class="post-meta-item-text">更新于：</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-07-12T14:45:21+08:00">2018-07-12</time>
+              <time title="更新于" itemprop="dateModified" datetime="2018-07-12T14:55:49+08:00">2018-07-12</time>
             
           </span>
 
@@ -443,39 +443,107 @@
 <li>字典</li>
 <li>集合</li>
 <li>文件操作</li>
-<li><p>字符编码</p>
-<a id="more"></a> 
-<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><p>  names = “ZhangYang Guyun Xiangpeng XuLiangChen”<br>  #创建列表[]<br>  names = [“ZhangYang”,”Guyun”,”XiangPeng”,”XuLiangchen”]</p>
-</li>
+<li>字符编码<a id="more"></a> 
+<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2></li>
 </ul>
-<ol>
-<li><p>增</p>
-<p> #追加到最后 list.append<br> names.append(“LeiHaidong”)<br> #插入到所选位置之前 list.insert(numb,str)<br> names.insert(1,”ChenRonghua”)<br> names.insert(3,”XinZhiyu”)</p>
-</li>
-<li><p>删</p>
-<p> #delete1 list.remove(str)<br> names.remove(“ChenRonghua”)<br> #delete2 del list[numb]<br> del names[1]<br> #delete3 list.pop()<br> names.pop() #删除最后一个</p>
-</li>
-<li><p>改</p>
-<p> #修改 list[numb]=str<br> names[2]=”XieDi”<br> print(names)</p>
-</li>
-<li><p>查</p>
-<p> #查找 list.index(str)返回位置<br> print(names.index(“XieDi”))</p>
-</li>
-<li><p>切片</p>
-<p> names=[‘张三’,’Guyun’,’Xiangpeng’,’Alex’]<br> print(names[1:2])<br> ‘’’<br> [a:b]取值为[a,b)左闭右开区间<br> 可以将:理解为省略的都取<br> 显示结果<br> [‘Guyun’]<br> ‘’’<br> #取最后一个值<br> print(names[-1])<br> #取最后两个值<br> print(names[-1:-3])#错误取法<br> ‘’’<br> 结果为<br> []<br> 应该是自左向右取值<br> ‘’’<br> print(names[-3:-1])#错误取法<br> ‘’’<br> 结果为<br> [‘Guyun’, ‘XiangPeng’]<br> 取不到最后一位<br> ‘’’<br> print(names[-2:])#正确取法<br> #自前向后取3个<br> print(names[:3])<br> names2=[‘张三’,’Alex’,’Guna’]<br> #步长切片list[起:终:步长]<br> print(names[0:-1:2])<br> print(names[::2])</p>
-</li>
-<li><p>copy</p>
-<p> import copy</p>
-<p> names = [“ZhangYang”,”Guoyun “,[“jack”,”Anny”]]<br> names2 = names.copy()<br> print(names)<br> print(names2)</p>
-<p> #copy只复制一级列表，浅copy<br> #names中的二级列表[“jack”,”Anny”]只复制了二级列表的id<br> #当通过names[2][1]修改时，names2中的二级列表也会被修改<br> names[1]=”郭云”<br> names[2][1]=”安妮”<br> print(names)<br> print(names2)<br> #copy.deepcopy:深copy<br> #涉及到二级列表时创建新的列表id并创建二级列表<br> #改变names的二级列表时，不改变names2的内容<br> names3 = copy.deepcopy(names)<br> names[2][1]=”anny”<br> print(names)<br> print(names3)</p>
-<p> for i in names:</p>
-<pre><code>print(i)
-</code></pre></li>
-<li><p>其他操作</p>
-<p> #提取 list[list.index(str)]<br> print(names[names.index(“XieDi”)])<br> #统计重复的 list.count(str)<br> print(names.count(“XieDi”))<br> #清空 list.clear()<br> names.clear()<br> #反转 list.reverse()<br> names.reverse()<br> print(names)<br> #按ascII码排序 list.sort()<br> names.sort()<br> #合并列表 list1.extend(list2),在末尾追加，不合并重复<br> names.extend(names2)<br> #del names2删除列表变量</p>
-</li>
-</ol>
+<hr>
+<pre><code>names = &quot;ZhangYang Guyun Xiangpeng XuLiangChen&quot;
+#创建列表[]
+names = [&quot;ZhangYang&quot;,&quot;Guyun&quot;,&quot;XiangPeng&quot;,&quot;XuLiangchen&quot;]
+</code></pre><h3 id="增删改查"><a href="#增删改查" class="headerlink" title="增删改查"></a>增删改查</h3><p>增</p>
+<pre><code>#追加到最后 list.append
+names.append(&quot;LeiHaidong&quot;)
+#插入到所选位置之前 list.insert(numb,str)
+names.insert(1,&quot;ChenRonghua&quot;)
+names.insert(3,&quot;XinZhiyu&quot;)
+</code></pre><p>删</p>
+<pre><code>#delete1 list.remove(str)
+names.remove(&quot;ChenRonghua&quot;)
+#delete2 del list[numb]
+del names[1]
+#delete3 list.pop()
+names.pop() #删除最后一个
+</code></pre><p>改</p>
+<pre><code>#修改 list[numb]=str
+names[2]=&quot;XieDi&quot;
+print(names)
+</code></pre><p>查</p>
+<pre><code>#查找 list.index(str)返回位置
+print(names.index(&quot;XieDi&quot;))
+</code></pre><h3 id="切片"><a href="#切片" class="headerlink" title="切片"></a>切片</h3><pre><code>names=[&apos;张三&apos;,&apos;Guyun&apos;,&apos;Xiangpeng&apos;,&apos;Alex&apos;]
+print(names[1:2])
+&apos;&apos;&apos;
+[a:b]取值为[a,b)左闭右开区间
+可以将:理解为省略的都取
+显示结果
+[&apos;Guyun&apos;]
+&apos;&apos;&apos;
+#取最后一个值
+print(names[-1])
+#取最后两个值
+print(names[-1:-3])#错误取法
+&apos;&apos;&apos;
+结果为
+[]
+应该是自左向右取值
+&apos;&apos;&apos;
+print(names[-3:-1])#错误取法
+&apos;&apos;&apos;
+结果为
+[&apos;Guyun&apos;, &apos;XiangPeng&apos;]
+取不到最后一位
+&apos;&apos;&apos;
+print(names[-2:])#正确取法
+#自前向后取3个
+print(names[:3])
+names2=[&apos;张三&apos;,&apos;Alex&apos;,&apos;Guna&apos;]
+#步长切片list[起:终:步长]
+print(names[0:-1:2])
+print(names[::2])
+</code></pre><h3 id="copy"><a href="#copy" class="headerlink" title="copy"></a>copy</h3><pre><code>import copy
 
+names = [&quot;ZhangYang&quot;,&quot;Guoyun &quot;,[&quot;jack&quot;,&quot;Anny&quot;]]
+names2 = names.copy()
+print(names)
+print(names2)
+
+#copy只复制一级列表，浅copy
+#names中的二级列表[&quot;jack&quot;,&quot;Anny&quot;]只复制了二级列表的id
+#当通过names[2][1]修改时，names2中的二级列表也会被修改
+names[1]=&quot;郭云&quot;
+names[2][1]=&quot;安妮&quot;
+print(names)
+print(names2)
+#copy.deepcopy:深copy
+#涉及到二级列表时创建新的列表id并创建二级列表
+#改变names的二级列表时，不改变names2的内容
+names3 = copy.deepcopy(names)
+names[2][1]=&quot;anny&quot;
+print(names)
+print(names3)
+
+for i in names:
+    print(i)
+</code></pre><h3 id="其他操作"><a href="#其他操作" class="headerlink" title="其他操作"></a>其他操作</h3><pre><code>#提取 list[list.index(str)]
+print(names[names.index(&quot;XieDi&quot;)])
+#统计重复的 list.count(str)
+print(names.count(&quot;XieDi&quot;))
+#清空 list.clear()
+names.clear()
+#反转 list.reverse()
+names.reverse()
+print(names)
+#按ascII码排序 list.sort()
+names.sort() 
+#合并列表 list1.extend(list2),在末尾追加，不合并重复
+names.extend(names2)
+#del names2删除列表变量
+</code></pre><h2 id="元组"><a href="#元组" class="headerlink" title="元组"></a>元组</h2><hr>
+<p>元组不希望被修改，且只有两种用法：</p>
+<pre><code>names = (&apos;alex&apos;,&apos;jack&apos;)
+#index:查找,count:计数
+print(names.index(&apos;alex&apos;),names.count(&apos;jack&apos;))
+</code></pre>
       
     </div>
 
@@ -690,7 +758,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#知识点"><span class="nav-number">1.</span> <span class="nav-text">知识点</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#列表"><span class="nav-number">1.1.</span> <span class="nav-text">列表</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#知识点"><span class="nav-number">1.</span> <span class="nav-text">知识点</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#列表"><span class="nav-number">1.1.</span> <span class="nav-text">列表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#增删改查"><span class="nav-number">1.1.1.</span> <span class="nav-text">增删改查</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#切片"><span class="nav-number">1.1.2.</span> <span class="nav-text">切片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#copy"><span class="nav-number">1.1.3.</span> <span class="nav-text">copy</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他操作"><span class="nav-number">1.1.4.</span> <span class="nav-text">其他操作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#元组"><span class="nav-number">1.2.</span> <span class="nav-text">元组</span></a></li></ol></li></ol></div>
             
 
           </div>
