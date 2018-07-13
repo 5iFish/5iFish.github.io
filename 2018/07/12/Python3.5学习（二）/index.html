@@ -108,7 +108,7 @@
 <meta property="og:description" content="知识点 列表 元组 字符串 字典 集合 文件操作 字符编码">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://5ifish.me/images/字符编码转化图.jpg">
-<meta property="og:updated_time" content="2018-07-13T02:03:21.225Z">
+<meta property="og:updated_time" content="2018-07-13T09:51:31.999Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python3.5学习（二）">
 <meta name="twitter:description" content="知识点 列表 元组 字符串 字典 集合 文件操作 字符编码">
@@ -237,7 +237,7 @@
         
           
   
-  <li class="menu-item menu-item-about menu-item-active">
+  <li class="menu-item menu-item-about">
     <a href="/about/" rel="section">
       <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
 </li>
@@ -257,7 +257,7 @@
         
           
   
-  <li class="menu-item menu-item-categories">
+  <li class="menu-item menu-item-categories menu-item-active">
     <a href="/categories/" rel="section">
       <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
 </li>
@@ -380,7 +380,7 @@
               
                 <span class="post-meta-item-text">更新于：</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-07-13T10:03:21+08:00">2018-07-13</time>
+              <time title="更新于" itemprop="dateModified" datetime="2018-07-13T17:51:31+08:00">2018-07-13</time>
             
           </span>
 
@@ -1026,7 +1026,456 @@ print(s.encode(&quot;utf-8&quot;).decode(&quot;utf-8&quot;).encode(&quot;gb2312&
 <ol>
 <li>可以添加商品，修改商品价格。</li>
 </ol>
+<p>不采用函数：</p>
+<p>商家入口：</p>
+<pre><code># Author:ZT
 
+# 先打开商品文件
+f = ope
+n(&apos;business.txt&apos;, &apos;r&apos;,encoding=&apos;utf-8&apos;)
+# 创建商品列表
+commodity_list = []
+# 将文件中的字符串按照列表的形式读入
+for item in f:
+    commodity_list.append(item.strip())
+f.close()
+#设置全局退出变量
+exit_mark = True
+while exit_mark:
+    adOrmo = input(&quot;您需要什么操作：增a,删d,改m,显v,返回b，离开q&quot;)
+    while exit_mark:
+        if adOrmo ==&apos;v&apos;:
+            for item in commodity_list:
+                print(item)
+            break
+        elif adOrmo == &apos;a&apos;:
+            commodity = input(&quot;请输入商品：&quot;)
+            if commodity ==&quot;q&quot;:
+                exit_mark = False
+            elif commodity ==&quot;b&quot;:
+                break
+            else:
+                price = input(&quot;请输入价格：&quot;)
+                if price ==&quot;q&quot;:
+                    exit_mark = False
+                elif price ==&quot;b&quot;:
+                    break
+                elif price.isdigit():
+                    # 先打开商品文件
+                    f = open(&apos;business.txt&apos;, &apos;a+&apos;,encoding=&apos;utf-8&apos;)
+                    # 如果不是新文件需要先换行
+                    if f.tell() != 0:
+                        print(&apos;\n&apos;)
+                    #在末行追加上商品
+                    f.write(commodity+&apos;\t&apos;+price+&apos;\n&apos;)
+                    #在列表中添加商品
+                    f.close()
+                    commodity_list.append(commodity+&apos;\t&apos;+price)
+                    print(&quot;成功将%s添加到商品列表！！&quot;%commodity)
+                    for index,item in enumerate(commodity_list):
+                        print(index,item)
+                    break
+                else:
+                    print(&quot;输入金额不合法！！！&quot;)
+                    break
+        elif adOrmo == &apos;m&apos;:
+            for index,item in enumerate(commodity_list):
+                print(index,item)
+            user_choice = input(&quot;需要修改哪个：&quot;)
+            if user_choice ==&quot;q&quot;:
+                exit_mark = False
+            elif user_choice ==&quot;b&quot;:
+                break
+            elif int(user_choice)&gt;=0 and int(user_choice)&lt;len(commodity_list):
+                user_mo =input(&quot;修改为：&quot;)
+                if user_mo == &quot;q&quot;:
+                    exit_mark = False
+                elif user_mo == &quot;b&quot;:
+                    break
+                elif user_mo.isdigit():
+                    commoditymo = commodity_list[int(user_choice)].split(&apos;\t&apos;)
+                    commodity_list[int(user_choice)] =commoditymo[0]+&apos;\t&apos;+user_mo
+                    f = open(&apos;business.txt&apos;, &apos;w&apos;,encoding=&apos;utf-8&apos;)
+                    for item in commodity_list:
+                        f.write(item+&apos;\n&apos;)
+                    f.close()
+                    print(&quot;结果为：&quot;)
+                    for index,item in enumerate(commodity_list):
+                        print(index,item)
+                    break
+                else:
+                    print(&quot;输入金额不合法！！&quot;)
+                    break
+            else:
+                print(&quot;查找不到该商品！！&quot;)
+                break
+        elif adOrmo == &apos;d&apos;:
+            for index,item in enumerate(commodity_list):
+                print(index,item)
+            user_choice = input(&quot;需要删除哪个：&quot;)
+            if user_choice ==&quot;q&quot;:
+                exit_mark = False
+            elif user_choice ==&quot;b&quot;:
+                break
+            elif int(user_choice)&gt;=0 and int(user_choice)&lt;len(commodity_list):
+                del commodity_list[int(user_choice)]
+                f = open(&apos;business.txt&apos;,&apos;w&apos;,encoding=&apos;utf-8&apos;)
+                for item in commodity_list:
+                    f.write(item+&apos;\n&apos;)
+                f.close()
+                print(&quot;结果为：&quot;)
+                for item in commodity_list:
+                    print(item)
+                break
+            else:
+                print(&quot;查找不到该商品！！&quot;)
+                break
+        elif adOrmo ==&quot;b&quot;:
+            break
+        elif adOrmo ==&quot;q&quot;:
+            print(&quot;再见！！&quot;)
+            exit_mark = False
+        else:
+            print(&quot;输入参数不合法!!&quot;)
+            break
+</code></pre><p>用户入口：</p>
+<pre><code># Author:ZT
+
+#创建用户列表
+custom_list =[]
+#打开用户文件
+f_custom = open(&apos;custom.txt&apos;,&apos;a+&apos;,encoding=&apos;utf-8&apos;)
+#判断用户文件是否为空
+isFirst = f_custom.tell()
+if isFirst == 0:
+    while True:
+        salary = input(&apos;首次登陆，请输入工资:&apos;)
+        if salary.isdigit():
+            f_custom.write(&quot;salary&quot;+&apos;\t&apos;+salary)
+            break
+        else:
+            print(&quot;输入格式不正确&quot;)
+else:
+    pass
+f_custom.seek(0)
+balance_line=f_custom.readline().split(&apos;\t&apos;)
+balance = balance_line[1].strip()
+for line in f_custom:
+    custom_list.append(line.strip())
+f_custom.close()
+print(&quot;您的余额为：%s&quot;%balance)
+
+# 先打开商品文件
+f = open(&apos;business.txt&apos;, &apos;r&apos;,encoding=&apos;utf-8&apos;)
+# 创建商品列表
+commodity_list = []
+# 将文件中的字符串按照列表的形式读入
+for line in f:
+    commodity_list.append(line.strip())
+f.close()
+
+#用户选择界面
+exit_mark =True
+while exit_mark:
+    user_choose = input(&quot;请问您需要什么服务：购买商品(m),查询已购商品(c),余额(y),返回上一级(b),退出(q)&quot;)
+    if user_choose == &apos;m&apos;:
+        while exit_mark:
+            # 打印商品列表
+            for index, item2 in enumerate(commodity_list):
+                print(index, item2)
+            #用户选择
+            user_buy = input(&quot;请选择一个商品：&quot;)
+            #判断输入是否正确
+            if int(user_buy) &gt;=0 and int(user_buy) &lt;len(commodity_list):
+                price = int(commodity_list[int(user_buy)].split(&apos;\t&apos;)[1])
+                if int(balance) &gt;= price:
+                    balance = str(int(balance)-price)
+                    custom_list.append(commodity_list[int(user_buy)])
+                    f_custom = open(&apos;custom.txt&apos;,&apos;w&apos;,encoding=&apos;utf-8&apos;)
+                    f_custom.write(&apos;balance&apos;+&apos;\t&apos;+balance)
+                    for item in custom_list:
+                        f_custom.write(&apos;\n&apos;+item)
+                    f_custom.close()
+                    for item in custom_list:
+                        print(item)
+                    print(&quot;添加%s到购物车成功！！&quot;%commodity_list[int(user_buy)].split(&apos;\t&apos;)[0])
+                    isBuy = input(&quot;是否继续购买？y/n&quot;)
+                    if isBuy == &apos;n&apos;:
+                        break
+                    else:
+                        pass
+                else:
+                    print(&quot;抱歉您的余额不足，为%s&quot;%balance)
+                    break
+            elif user_buy == &apos;b&apos;:
+                break
+            elif user_buy ==&apos;q&apos;:
+                print(&quot;欢迎下次光临！！&quot;)
+                exit_mark =False
+            else:
+                print(&quot;非法输入！！！&quot;)
+                exit_mark = False
+    elif user_choose ==&apos;c&apos;:
+        print(&quot;您购买了以下商品：&quot;)
+        for index,item in enumerate(custom_list):
+            print(index,item)
+    elif user_choose ==&apos;y&apos;:
+        print(&quot;您的余额为：%s&quot;%balance)
+    elif user_choose ==&apos;b&apos;:
+        pass
+    elif user_choose ==&apos;q&apos;:
+        print(&quot;欢迎下次光临，再见！！&quot;)
+        break
+    else:
+        print(&quot;非法输入&quot;)
+        exit_mark =False
+</code></pre><p>采用函数：</p>
+<p>商家接口：</p>
+<pre><code># Author:ZT
+
+#将文件按照列表形式读入
+def ftolist(list):
+    with open (&quot;business.txt&quot;,&apos;r&apos;,encoding=&apos;utf-8&apos;) as f:
+        for line in f:
+            list.append(line.strip())
+
+#带编号显示列表：
+def showlistn(list):
+    for index,item in enumerate(list):
+        print(index,item)
+
+#无编号显示列表：
+def showlist(list):
+    for item in list:
+        print(item)
+
+#追加商品
+def appenditem(commodity,price):
+    with open (&apos;business.txt&apos;,&apos;a+&apos;,encoding=&apos;utf-8&apos;) as f:
+        if f.tell() != 0:
+            print(&apos;\n&apos;)
+        f.write(commodity+&apos;\t&apos;+price)
+
+#分割字符串
+def splitstr(s):
+    list=s.split(&apos;\t&apos;)
+    return list
+
+#修改文件
+def modifyf(list):
+    with open (&apos;business.txt&apos;,&apos;w&apos;,encoding=&apos;utf-8&apos;) as f:
+        for item in list:
+            f.write(item+&apos;\n&apos;)
+
+#创建商品列表
+commodity_list = []
+
+#调用ftolist()将文件读入列表
+ftolist(commodity_list)
+
+#设置全局退出变量
+exit_mark = True
+while exit_mark:
+    adOrmo = input(&quot;您需要什么操作：增a,删d,改m,显v,返回b，离开q&quot;)
+    while exit_mark:
+        if adOrmo ==&apos;v&apos;:
+            showlist(commodity_list)
+            break
+        elif adOrmo == &apos;a&apos;:
+            commodity = input(&quot;请输入商品：&quot;)
+            if commodity ==&quot;q&quot;:
+                exit_mark = False
+            elif commodity ==&quot;b&quot;:
+                break
+            else:
+                price = input(&quot;请输入价格：&quot;)
+                if price ==&quot;q&quot;:
+                    exit_mark = False
+                elif price ==&quot;b&quot;:
+                    break
+                elif price.isdigit():
+                    # 追加到文件中
+                    appenditem(commodity,price)
+                    commodity_list.append(commodity+&apos;\t&apos;+price)
+                    print(&quot;成功将%s添加到商品列表！！&quot;%commodity)
+                    showlistn(commodity_list)
+                    break
+                else:
+                    print(&quot;输入金额不合法！！！&quot;)
+                    break
+        elif adOrmo == &apos;m&apos;:
+            showlistn(commodity_list)
+            user_choice = input(&quot;需要修改哪个：&quot;)
+            if user_choice ==&quot;q&quot;:
+                exit_mark = False
+            elif user_choice ==&quot;b&quot;:
+                break
+            elif int(user_choice)&gt;=0 and int(user_choice)&lt;len(commodity_list):
+                user_mo =input(&quot;修改为：&quot;)
+                if user_mo == &quot;q&quot;:
+                    exit_mark = False
+                elif user_mo == &quot;b&quot;:
+                    break
+                elif user_mo.isdigit():
+                    commodity_list[int(user_choice)] =splitstr(commodity_list[int(user_choice)])[0]+&apos;\t&apos;+user_mo
+                    modifyf(commodity_list)
+                    print(&quot;结果为：&quot;)
+                    showlistn(commodity_list)
+                    break
+                else:
+                    print(&quot;输入金额不合法！！&quot;)
+                    break
+            else:
+                print(&quot;查找不到该商品！！&quot;)
+                break
+        elif adOrmo == &apos;d&apos;:
+            showlistn(commodity_list)
+            user_choice = input(&quot;需要删除哪个：&quot;)
+            if user_choice ==&quot;q&quot;:
+                exit_mark = False
+            elif user_choice ==&quot;b&quot;:
+                break
+            elif int(user_choice)&gt;=0 and int(user_choice)&lt;len(commodity_list):
+                del commodity_list[int(user_choice)]
+                modifyf(commodity_list)
+                print(&quot;结果为：&quot;)
+                showlist(commodity_list)
+                break
+            else:
+                print(&quot;查找不到该商品！！&quot;)
+                break
+        elif adOrmo ==&quot;b&quot;:
+            break
+        elif adOrmo ==&quot;q&quot;:
+            print(&quot;再见！！&quot;)
+            exit_mark = False
+        else:
+            print(&quot;输入参数不合法!!&quot;)
+            break
+</code></pre><p>用户接口：</p>
+<pre><code># Author:ZT
+
+#拆分字符串
+def splitstr(s):
+    list=s.split(&apos;\t&apos;)
+    return list
+
+#判断是否为空文件
+def isNull():
+    with open(&apos;custom.txt&apos;, &apos;a+&apos;, encoding=&apos;utf-8&apos;) as f_custom:
+        isFirst = f_custom.tell()
+        if isFirst == 0:
+            while True:
+                salary = input(&apos;首次登陆，请输入工资:&apos;)
+                if salary.isdigit():
+                    f_custom.write(&quot;salary&quot; + &apos;\t&apos; + salary)
+                    break
+                else:
+                    print(&quot;输入格式不正确&quot;)
+
+#f读入
+def readf(list,f):
+    for line in f:
+        list.append(line.strip())
+
+#显示列表：
+def showlist(list):
+    for index, item in enumerate(list):
+        print(index, item)
+
+#读取custom文件中的内容
+def ftoclist(custom_list):
+    with open(&apos;custom.txt&apos;,&apos;r&apos;,encoding=&apos;utf-8&apos;) as f_custom:
+        #balance_line =f_custom.readline().split(&apos;\t&apos;)
+        balance =splitstr(f_custom.readline())[1].strip()#balance_line[1].strip()
+        readf(custom_list,f_custom)
+    return custom_list,balance
+#写回custom文件内容
+def clisttof(custom_list,balance):
+    with open(&apos;custom.txt&apos;, &apos;w&apos;, encoding=&apos;utf-8&apos;) as f_custom:
+        f_custom.write(&apos;balance&apos; + &apos;\t&apos; + balance)
+        for item in custom_list:
+            f_custom.write(&apos;\n&apos; + item)
+
+#读取business文件内容
+def ftoblist(commodity_list):
+    with open(&apos;business.txt&apos;,&apos;r&apos;,encoding=&apos;utf-8&apos;) as f_commodity:
+        readf(commodity_list,f_commodity)
+#打印商品余额
+def print_ba(balance):
+    print(&quot;您的余额为：%s&quot;%balance)
+
+#其他输入处理
+def ill():
+    print(&quot;非法输入！！&quot;)
+def quit():
+    print(&quot;欢迎下次光临！！&quot;)
+    return False
+
+#创建用户列表
+custom_list =[]
+# 创建商品列表
+commodity_list = []
+#调用isNull判断用户文件是否为空
+isNull()
+
+#调用ftolist()将用户文件读到列表中
+balance =ftoclist(custom_list)[1]
+#打印用户余额
+print_ba(balance)
+
+
+# 调用ftoblish()将商品文件读入列表
+ftoblist(commodity_list)
+
+#用户选择界面
+exit_mark =True
+while exit_mark:
+    user_choose = input(&quot;请问您需要什么服务：购买商品(m),查询已购商品(c),余额(y),返回上一级(b),退出(q)&quot;)
+    if user_choose == &apos;m&apos;:
+        while exit_mark:
+            # 打印商品列表
+            showlist(commodity_list)
+            #用户选择
+            user_buy = input(&quot;请选择一个商品：&quot;)
+            #判断输入是否正确
+            if int(user_buy) &gt;=0 and int(user_buy) &lt;len(commodity_list):
+                price = splitstr(commodity_list[int(user_buy)])[1].strip()
+                if int(balance) &gt;= int(price):
+                    balance = str(int(balance)-int(price))
+                    custom_list.append(commodity_list[int(user_buy)])
+                    #调用clisttof写回文件
+                    clisttof(custom_list,balance)
+                    #显示列表
+                    showlist(custom_list)
+                    print(&quot;添加%s到购物车成功！！&quot;%splitstr(commodity_list[int(user_buy)])[0])
+                    isBuy = input(&quot;是否继续购买？y/n&quot;)
+                    if isBuy == &apos;n&apos;:
+                        break
+                    else:
+                        pass
+                else:
+                    print(&quot;抱歉您的余额不足，为%s&quot;%balance)
+                    break
+            elif user_buy == &apos;b&apos;:
+                break
+            elif user_buy ==&apos;q&apos;:
+                exit_mark =quit()
+            else:
+                ill()
+    elif user_choose ==&apos;c&apos;:
+        print(&quot;您购买了以下商品：&quot;)
+        #调用showlist显示列表
+        showlist(custom_list)
+    elif user_choose ==&apos;y&apos;:
+        print_ba(balance)
+    elif user_choose ==&apos;b&apos;:
+        pass
+    elif user_choose ==&apos;q&apos;:
+        exit_mark = quit()
+    else:
+        ill()
+</code></pre><h2 id="作业二"><a href="#作业二" class="headerlink" title="作业二"></a>作业二</h2>
       
     </div>
 
@@ -1241,7 +1690,7 @@ print(s.encode(&quot;utf-8&quot;).decode(&quot;utf-8&quot;).encode(&quot;gb2312&
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#知识点"><span class="nav-number">1.</span> <span class="nav-text">知识点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一、列表"><span class="nav-number">2.</span> <span class="nav-text">一、列表</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-增删改查"><span class="nav-number">2.1.</span> <span class="nav-text">1. 增删改查</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-切片"><span class="nav-number">2.2.</span> <span class="nav-text">2. 切片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-copy"><span class="nav-number">2.3.</span> <span class="nav-text">3. copy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-其他操作"><span class="nav-number">2.4.</span> <span class="nav-text">4. 其他操作</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、元组"><span class="nav-number">3.</span> <span class="nav-text">二、元组</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、实例一：购物车"><span class="nav-number">4.</span> <span class="nav-text">三、实例一：购物车</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四、字符串"><span class="nav-number">5.</span> <span class="nav-text">四、字符串</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#五、字典"><span class="nav-number">6.</span> <span class="nav-text">五、字典</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-创建字典"><span class="nav-number">6.1.</span> <span class="nav-text">1. 创建字典</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-增加"><span class="nav-number">6.2.</span> <span class="nav-text">2. 增加</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-修改"><span class="nav-number">6.3.</span> <span class="nav-text">3. 修改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-删除"><span class="nav-number">6.4.</span> <span class="nav-text">4. 删除</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-查询"><span class="nav-number">6.5.</span> <span class="nav-text">5. 查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-其他操作"><span class="nav-number">6.6.</span> <span class="nav-text">6. 其他操作</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#六、实例二：三级菜单"><span class="nav-number">7.</span> <span class="nav-text">六、实例二：三级菜单</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#七、集合"><span class="nav-number">8.</span> <span class="nav-text">七、集合</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-集合的创建"><span class="nav-number">8.1.</span> <span class="nav-text">1. 集合的创建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-集合运算"><span class="nav-number">8.2.</span> <span class="nav-text">2. 集合运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-集合的增删改查"><span class="nav-number">8.3.</span> <span class="nav-text">3. 集合的增删改查</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#八、文件操作"><span class="nav-number">9.</span> <span class="nav-text">八、文件操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-打开"><span class="nav-number">9.1.</span> <span class="nav-text">1. 打开</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-读"><span class="nav-number">9.2.</span> <span class="nav-text">2. 读</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-写"><span class="nav-number">9.3.</span> <span class="nav-text">3. 写</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-修改"><span class="nav-number">9.4.</span> <span class="nav-text">4. 修改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-例子"><span class="nav-number">9.5.</span> <span class="nav-text">5. 例子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-tell、seek"><span class="nav-number">9.6.</span> <span class="nav-text">6. tell、seek</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-其他功能"><span class="nav-number">9.7.</span> <span class="nav-text">7. 其他功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-制作进度条"><span class="nav-number">9.8.</span> <span class="nav-text">8. 制作进度条</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#九、字符编码"><span class="nav-number">10.</span> <span class="nav-text">九、字符编码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#十、作业"><span class="nav-number">11.</span> <span class="nav-text">十、作业</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#作业一-优化购物车"><span class="nav-number">11.1.</span> <span class="nav-text">作业一:优化购物车</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#知识点"><span class="nav-number">1.</span> <span class="nav-text">知识点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一、列表"><span class="nav-number">2.</span> <span class="nav-text">一、列表</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-增删改查"><span class="nav-number">2.1.</span> <span class="nav-text">1. 增删改查</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-切片"><span class="nav-number">2.2.</span> <span class="nav-text">2. 切片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-copy"><span class="nav-number">2.3.</span> <span class="nav-text">3. copy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-其他操作"><span class="nav-number">2.4.</span> <span class="nav-text">4. 其他操作</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、元组"><span class="nav-number">3.</span> <span class="nav-text">二、元组</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、实例一：购物车"><span class="nav-number">4.</span> <span class="nav-text">三、实例一：购物车</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四、字符串"><span class="nav-number">5.</span> <span class="nav-text">四、字符串</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#五、字典"><span class="nav-number">6.</span> <span class="nav-text">五、字典</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-创建字典"><span class="nav-number">6.1.</span> <span class="nav-text">1. 创建字典</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-增加"><span class="nav-number">6.2.</span> <span class="nav-text">2. 增加</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-修改"><span class="nav-number">6.3.</span> <span class="nav-text">3. 修改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-删除"><span class="nav-number">6.4.</span> <span class="nav-text">4. 删除</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-查询"><span class="nav-number">6.5.</span> <span class="nav-text">5. 查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-其他操作"><span class="nav-number">6.6.</span> <span class="nav-text">6. 其他操作</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#六、实例二：三级菜单"><span class="nav-number">7.</span> <span class="nav-text">六、实例二：三级菜单</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#七、集合"><span class="nav-number">8.</span> <span class="nav-text">七、集合</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-集合的创建"><span class="nav-number">8.1.</span> <span class="nav-text">1. 集合的创建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-集合运算"><span class="nav-number">8.2.</span> <span class="nav-text">2. 集合运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-集合的增删改查"><span class="nav-number">8.3.</span> <span class="nav-text">3. 集合的增删改查</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#八、文件操作"><span class="nav-number">9.</span> <span class="nav-text">八、文件操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-打开"><span class="nav-number">9.1.</span> <span class="nav-text">1. 打开</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-读"><span class="nav-number">9.2.</span> <span class="nav-text">2. 读</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-写"><span class="nav-number">9.3.</span> <span class="nav-text">3. 写</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-修改"><span class="nav-number">9.4.</span> <span class="nav-text">4. 修改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-例子"><span class="nav-number">9.5.</span> <span class="nav-text">5. 例子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-tell、seek"><span class="nav-number">9.6.</span> <span class="nav-text">6. tell、seek</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-其他功能"><span class="nav-number">9.7.</span> <span class="nav-text">7. 其他功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-制作进度条"><span class="nav-number">9.8.</span> <span class="nav-text">8. 制作进度条</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#九、字符编码"><span class="nav-number">10.</span> <span class="nav-text">九、字符编码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#十、作业"><span class="nav-number">11.</span> <span class="nav-text">十、作业</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#作业一-优化购物车"><span class="nav-number">11.1.</span> <span class="nav-text">作业一:优化购物车</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#作业二"><span class="nav-number">11.2.</span> <span class="nav-text">作业二</span></a></li></ol></li></ol></div>
             
 
           </div>
