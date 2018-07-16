@@ -107,7 +107,7 @@
 <meta property="og:site_name" content="5iFish&#39;s Blog">
 <meta property="og:description" content="知识点 函数式编程 函数 返回值 参数与变量 递归 匿名函数 高阶函数 内置方法">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-07-16T03:09:01.369Z">
+<meta property="og:updated_time" content="2018-07-16T09:08:28.524Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python3.5学习（三）">
 <meta name="twitter:description" content="知识点 函数式编程 函数 返回值 参数与变量 递归 匿名函数 高阶函数 内置方法">
@@ -378,7 +378,7 @@
               
                 <span class="post-meta-item-text">更新于：</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-07-16T11:09:01+08:00">2018-07-16</time>
+              <time title="更新于" itemprop="dateModified" datetime="2018-07-16T17:08:28+08:00">2018-07-16</time>
             
           </span>
 
@@ -448,7 +448,7 @@
 </ul>
 <a id="more"></a> 
 <hr>
-<h1 id="函数式编程"><a href="#函数式编程" class="headerlink" title="函数式编程"></a>函数式编程</h1><p>函数式编程思维更接近数学计算</p>
+<h1 id="一、函数式编程"><a href="#一、函数式编程" class="headerlink" title="一、函数式编程"></a>一、函数式编程</h1><p>函数式编程思维更接近数学计算</p>
 <p>函数式编程是一种抽象程度很高的编程范式，纯粹的函数式编程<br>是没有变量的，因此，任意一个函数，只要输入是确定的输出<br>就是确定的，这种纯函数我们称之为没有副作用。</p>
 <p>举例：</p>
 <pre><code>（1+2）*3-4
@@ -460,7 +460,7 @@ car c = b-4;
 <pre><code>var result = subtract(multiply(add(1,2),3),4)
 </code></pre><p>函数式编程不是函数</p>
 <hr>
-<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><p>1.面向对象：类    class<br>2.面向过程：过程    def<br>3.函数式编程：函数    def</p>
+<h1 id="二、函数"><a href="#二、函数" class="headerlink" title="二、函数"></a>二、函数</h1><p>1.面向对象：类    class<br>2.面向过程：过程    def<br>3.函数式编程：函数    def</p>
 <p>python中函数定义方法：</p>
 <pre><code>def test(x):
     &quot;The function definitions&quot;
@@ -516,7 +516,7 @@ test1()
 test2()
 test3()
 </code></pre><hr>
-<h1 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h1><p>函数中用return返回参数</p>
+<h1 id="三、返回值"><a href="#三、返回值" class="headerlink" title="三、返回值"></a>三、返回值</h1><p>函数中用return返回参数</p>
 <pre><code>def test1():
     &quot;test1&quot;
     print(&quot;this is test1&quot;)
@@ -547,8 +547,7 @@ None
 (1, &apos;hello&apos;, [&apos;alex&apos;, &apos;wupeiqi&apos;], {&apos;name&apos;: &apos;alex&apos;})
 &apos;&apos;&apos;
 </code></pre><hr>
-<h1 id="参数与变量"><a href="#参数与变量" class="headerlink" title="参数与变量"></a>参数与变量</h1><p>参数：</p>
-<pre><code>def test(x,y):
+<h1 id="四、参数与变量"><a href="#四、参数与变量" class="headerlink" title="四、参数与变量"></a>四、参数与变量</h1><h2 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h2><pre><code>def test(x,y):
     print(x)
     print(y)
 test(y=2,x=1)#关键字调用与形参顺序无关
@@ -610,8 +609,7 @@ def test7(name,*args,**kwargs):
 def logger(source):
     print(&quot;from%s&quot;%source)
 test7(&apos;alex&apos;,sex=&apos;m&apos;,hobby=&apos;tesla&apos;)
-</code></pre><p>局部变量：</p>
-<pre><code>#字符串和整数变量：
+</code></pre><h2 id="局部变量"><a href="#局部变量" class="headerlink" title="局部变量"></a>局部变量</h2><pre><code>#字符串和整数变量：
 school = &quot;NEU&quot;
 def change_name(name):
     global school#声明要更改全局变量,可创建全局变量，不要使用
@@ -635,7 +633,7 @@ def change_name():
 change_name()
 print(names)
 </code></pre><hr>
-<h1 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h1><p>递归三个条件：</p>
+<h1 id="五、递归"><a href="#五、递归" class="headerlink" title="五、递归"></a>五、递归</h1><p>递归三个条件：</p>
 <ol>
 <li>递归要有明确的条件</li>
 <li>每次进入更深层递归时，问题规模相比上一次应该有所减少</li>
@@ -659,7 +657,7 @@ calc(10)
 10 5 2 1 -&gt;1
 &apos;&apos;&apos;
 </code></pre><hr>
-<h1 id="匿名函数"><a href="#匿名函数" class="headerlink" title="匿名函数"></a>匿名函数</h1><pre><code>#匿名函数针对不重复使用的函数
+<h1 id="六、匿名函数"><a href="#六、匿名函数" class="headerlink" title="六、匿名函数"></a>六、匿名函数</h1><pre><code>#匿名函数针对不重复使用的函数
 def sayhi(n):
     print(n)
 sayhi(3)
@@ -670,13 +668,13 @@ calc = lambda n:3 if n&lt;4 else n
 print(calc(5))
 print(lambda x,y:x+y,range(10))
 </code></pre><hr>
-<h1 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h1><p>变量可以指向函数。函数的参数能接收变量，那么一个函数就能接收另一个函数作为参数，这种函数成为高阶函数</p>
+<h1 id="七、高阶函数"><a href="#七、高阶函数" class="headerlink" title="七、高阶函数"></a>七、高阶函数</h1><p>变量可以指向函数。函数的参数能接收变量，那么一个函数就能接收另一个函数作为参数，这种函数成为高阶函数</p>
 <pre><code>def add(x,y,f):
     return f(x)+f(y)
 res = add(3,-6,abs)
 print(res)
 </code></pre><hr>
-<h1 id="内置方法"><a href="#内置方法" class="headerlink" title="内置方法"></a>内置方法</h1><pre><code># Author:ZT
+<h1 id="八、内置方法"><a href="#八、内置方法" class="headerlink" title="八、内置方法"></a>八、内置方法</h1><pre><code># Author:ZT
 #all：判断结果，如果都为真则返回true，否则返回false
 print(all([0,-5,3]))#F
 print(all([1,-5,3]))#T
@@ -856,6 +854,10 @@ __import__(&apos;function_test1&apos;)
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2018/07/16/Python3.5学习（四）/" rel="prev" title="Python3.5学习（三）">
+                Python3.5学习（三） <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -934,7 +936,7 @@ __import__(&apos;function_test1&apos;)
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1028,7 +1030,7 @@ __import__(&apos;function_test1&apos;)
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#知识点"><span class="nav-number">1.</span> <span class="nav-text">知识点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#函数式编程"><span class="nav-number">2.</span> <span class="nav-text">函数式编程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#函数"><span class="nav-number">3.</span> <span class="nav-text">函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#返回值"><span class="nav-number">4.</span> <span class="nav-text">返回值</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参数与变量"><span class="nav-number">5.</span> <span class="nav-text">参数与变量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#递归"><span class="nav-number">6.</span> <span class="nav-text">递归</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#匿名函数"><span class="nav-number">7.</span> <span class="nav-text">匿名函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#高阶函数"><span class="nav-number">8.</span> <span class="nav-text">高阶函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内置方法"><span class="nav-number">9.</span> <span class="nav-text">内置方法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#知识点"><span class="nav-number">1.</span> <span class="nav-text">知识点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一、函数式编程"><span class="nav-number">2.</span> <span class="nav-text">一、函数式编程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、函数"><span class="nav-number">3.</span> <span class="nav-text">二、函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、返回值"><span class="nav-number">4.</span> <span class="nav-text">三、返回值</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四、参数与变量"><span class="nav-number">5.</span> <span class="nav-text">四、参数与变量</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#参数"><span class="nav-number">5.1.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#局部变量"><span class="nav-number">5.2.</span> <span class="nav-text">局部变量</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#五、递归"><span class="nav-number">6.</span> <span class="nav-text">五、递归</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#六、匿名函数"><span class="nav-number">7.</span> <span class="nav-text">六、匿名函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#七、高阶函数"><span class="nav-number">8.</span> <span class="nav-text">七、高阶函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#八、内置方法"><span class="nav-number">9.</span> <span class="nav-text">八、内置方法</span></a></li></ol></div>
             
 
           </div>
