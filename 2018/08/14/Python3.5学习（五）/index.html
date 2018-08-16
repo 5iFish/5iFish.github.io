@@ -107,7 +107,7 @@
 <meta property="og:site_name" content="5iFish&#39;s Blog">
 <meta property="og:description" content="知识点 模块定义、导入、优化 内置模块 正则表达式">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-08-16T08:55:37.746Z">
+<meta property="og:updated_time" content="2018-08-16T12:55:03.035Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python3.5学习（五）">
 <meta name="twitter:description" content="知识点 模块定义、导入、优化 内置模块 正则表达式">
@@ -378,7 +378,7 @@
               
                 <span class="post-meta-item-text">更新于：</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-08-16T16:55:37+08:00">2018-08-16</time>
+              <time title="更新于" itemprop="dateModified" datetime="2018-08-16T20:55:03+08:00">2018-08-16</time>
             
           </span>
 
@@ -442,12 +442,12 @@
 <li>正则表达式</li>
 </ul>
 <a id="more"></a>
-<h1 id="模块定义、导入、优化"><a href="#模块定义、导入、优化" class="headerlink" title="模块定义、导入、优化"></a>模块定义、导入、优化</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>模块：本质是python文件，用来从逻辑上组织python代码（变量、函数、类、逻辑），为了实现其中的功能<br>包：本质是目录（必须带有<strong>init</strong>.py）</p>
-<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><p>a:标准库<br>b:开源模块<br>c:自定义模块  </p>
+<h1 id="一、模块定义、导入、优化"><a href="#一、模块定义、导入、优化" class="headerlink" title="一、模块定义、导入、优化"></a>一、模块定义、导入、优化</h1><h2 id="1-1-定义"><a href="#1-1-定义" class="headerlink" title="1.1 定义"></a>1.1 定义</h2><p>模块：本质是python文件，用来从逻辑上组织python代码（变量、函数、类、逻辑），为了实现其中的功能<br>包：本质是目录（必须带有<strong>init</strong>.py）</p>
+<h2 id="1-2-分类"><a href="#1-2-分类" class="headerlink" title="1.2 分类"></a>1.2 分类</h2><p>a:标准库<br>b:开源模块<br>c:自定义模块  </p>
 <blockquote>
 <p><strong><em>注意：为自定义的模块命名时，不要与标准库和电脑上安装的第三方模块名字相同</em></strong></p>
 </blockquote>
-<h2 id="导入方法"><a href="#导入方法" class="headerlink" title="导入方法"></a>导入方法</h2><h3 id="调用模块"><a href="#调用模块" class="headerlink" title="调用模块"></a>调用模块</h3><h4 id="imoort"><a href="#imoort" class="headerlink" title="imoort"></a>imoort</h4><p>import module :调用整个模块<br>使用模块时通过module_name.def_name来调用模块中的方法。</p>
+<h2 id="1-3-导入方法"><a href="#1-3-导入方法" class="headerlink" title="1.3 导入方法"></a>1.3 导入方法</h2><h3 id="1-3-1-调用模块"><a href="#1-3-1-调用模块" class="headerlink" title="1.3.1 调用模块"></a>1.3.1 调用模块</h3><h4 id="1-3-1-1-imoort"><a href="#1-3-1-1-imoort" class="headerlink" title="1.3.1.1 imoort"></a>1.3.1.1 imoort</h4><p>import module :调用整个模块<br>使用模块时通过module_name.def_name来调用模块中的方法。</p>
 <pre><code>#目录结构如下：
 +--dirname
 |  +--func.py
@@ -472,7 +472,7 @@ func main
 This is in func
 This is in main
 &apos;&apos;&apos;
-</code></pre><h4 id="from-import"><a href="#from-import" class="headerlink" title="from import"></a>from import</h4><p>from module_name frome def_name:调用模块中的方法<br>使用方法时，直接通过def_name()调用。</p>
+</code></pre><h4 id="1-3-1-2-from-import"><a href="#1-3-1-2-from-import" class="headerlink" title="1.3.1.2 from import"></a>1.3.1.2 from import</h4><p>from module_name frome def_name:调用模块中的方法<br>使用方法时，直接通过def_name()调用。</p>
 <pre><code>#目录结构如下：
 +--dirname
 |  +--func.py
@@ -501,7 +501,7 @@ This is in main
 </code></pre><blockquote>
 <p><strong><em>注意：引用模块中的函数不要与本程序中的函数重名</em></strong></p>
 </blockquote>
-<h3 id="调用包"><a href="#调用包" class="headerlink" title="调用包"></a>调用包</h3><p>直接通过import调用包时候，只调用了包中<strong>init</strong>.py中的内容，并且不能使用包中的其他模块<br>调用模块时，使用frome package_name import moudle_name 来调用</p>
+<h3 id="1-3-2-调用包"><a href="#1-3-2-调用包" class="headerlink" title="1.3.2 调用包"></a>1.3.2 调用包</h3><p>直接通过import调用包时候，只调用了包中<strong>init</strong>.py中的内容，并且不能使用包中的其他模块<br>调用模块时，使用frome package_name import moudle_name 来调用</p>
 <blockquote>
 <p><strong><em>注意：包与目录的区别，文件夹中必须包含有<strong>init</strong>.py文件在python中才被识别为包</em></strong></p>
 </blockquote>
@@ -540,7 +540,7 @@ this is in package/__init__
 <pre><code>this is in package/__init__
 this is in package/bin/atm
 </code></pre><p>可以发现from import的方式调用包时，遇到包也会首先执行包中的<strong>init</strong>模块，再执行其他模块</p>
-<h2 id="import的本质"><a href="#import的本质" class="headerlink" title="import的本质"></a>import的本质</h2><p>import本质就是路径搜索和搜索路径，导入模块的本质就是把python文件解释一遍。导入包的本质就是执行<strong>init</strong>.py文件</p>
+<h2 id="1-4-import的本质"><a href="#1-4-import的本质" class="headerlink" title="1.4 import的本质"></a>1.4 import的本质</h2><p>import本质就是路径搜索和搜索路径，导入模块的本质就是把python文件解释一遍。导入包的本质就是执行<strong>init</strong>.py文件</p>
 <p>下面根据上一小节的package示例来详细说明import的本质<br>在上一小节中我们使用from package import moudle时test.py文件可以直接通过from package.bin import atm来调用atm模块。<br>接下来我们通过config.py文件来调用atm模块。<br>config.py中的内容改为：</p>
 <pre><code>from package.bin import moudle
 name = &apos;package/__init__&apos;
@@ -581,12 +581,12 @@ print(&apos;this is in&apos;,name)
 this is in package/bin/atm
 this is in package/conf/config
 </code></pre><p>我们发现只要调用package就会执行一遍<strong>init</strong>.py模块，atm模块也如愿被成功调用</p>
-<h2 id="import优化"><a href="#import优化" class="headerlink" title="import优化"></a>import优化</h2><p>1.使用import module来调用模块时，每次module.func()都会寻找一次模块。<br>而使用from module import func时候，调用func不同寻找模块直接调用，需要注意的是调用的函数名不要与程序中的有重复的。</p>
+<h2 id="1-5-import优化"><a href="#1-5-import优化" class="headerlink" title="1.5 import优化"></a>1.5 import优化</h2><p>1.使用import module来调用模块时，每次module.func()都会寻找一次模块。<br>而使用from module import func时候，调用func不同寻找模块直接调用，需要注意的是调用的函数名不要与程序中的有重复的。</p>
 <p>2.在做程序的时候我们常常采用软件目录的规范来写程序，但是就会出现import的时候添加在搜索路径列表中的路径过多，可能存在相同的模块名在不同的路径中出现，在调用的时候系统会调用先添加进去的模块，就会出现错误。  </p>
 <blockquote>
 <p><strong><em>建议：个人感觉比较好的解决办法是通过将软件整体的目录所在的路径添加到列表中,之后都采用包调用的方式来调用不同目录中的模块，这样我们只需要在程序的主入口添加路径，其他地方都通过from package import moudle的方式调用即可。这样有效避免的搜索路径的困扰</em></strong></p>
 </blockquote>
-<h1 id="内置模块"><a href="#内置模块" class="headerlink" title="内置模块"></a>内置模块</h1><h2 id="time"><a href="#time" class="headerlink" title="time"></a>time</h2><pre><code>#1. time 格式化字符串
+<h1 id="二、内置模块"><a href="#二、内置模块" class="headerlink" title="二、内置模块"></a>二、内置模块</h1><h2 id="2-1-time"><a href="#2-1-time" class="headerlink" title="2.1 time"></a>2.1 time</h2><pre><code>#1. time 格式化字符串
 #2. time 时间戳
 import time
 print(time.time())
@@ -616,7 +616,7 @@ print(time.strptime(y,&quot;%Y-%m-%d %H:%M:%S&quot;))
 #asctime():转换元组到字符串默认格式：星期 月 日期 时间 年
 print(time.asctime())#Sun Jul 22 15:01:07 2018
 #ctime():转换时间戳到字符串模式
-</code></pre><h2 id="datatime"><a href="#datatime" class="headerlink" title="datatime"></a>datatime</h2><pre><code>import  datetime
+</code></pre><h2 id="2-2-datatime"><a href="#2-2-datatime" class="headerlink" title="2.2 datatime"></a>2.2 datatime</h2><pre><code>import  datetime
 
 #显示当前时间
 print(datetime.datetime.now())
@@ -630,7 +630,7 @@ print(s+datetime.timedelta(minutes=-2))
 #时间替换
 c_time = datetime.datetime.now()
 print(c_time.replace(day=21,month=6))
-</code></pre><h2 id="random"><a href="#random" class="headerlink" title="random"></a>random</h2><pre><code>#Author:zt
+</code></pre><h2 id="2-3-random"><a href="#2-3-random" class="headerlink" title="2.3 random"></a>2.3 random</h2><pre><code>#Author:zt
 import random
 #random()随机[0,1)之间的小数
 print(random.random())
@@ -653,7 +653,7 @@ print(random.uniform(1,100))
 #shuffle(items)洗牌功能：将列表都打乱，随机排序
 random.shuffle(x)
 print(x)
-</code></pre><h3 id="实例：验证码生成器"><a href="#实例：验证码生成器" class="headerlink" title="实例：验证码生成器"></a>实例：验证码生成器</h3><pre><code>#随机生成包含数字和字母的验证码
+</code></pre><h3 id="2-3-1-实例：验证码生成器"><a href="#2-3-1-实例：验证码生成器" class="headerlink" title="2.3.1 实例：验证码生成器"></a>2.3.1 实例：验证码生成器</h3><pre><code>#随机生成包含数字和字母的验证码
 import random
 
 n = int(input(&quot;请输入要定义几位的验证码&quot;))
@@ -675,7 +675,7 @@ while True:
     if isstr:
         print(checkcode)
         break
-</code></pre><h2 id="os"><a href="#os" class="headerlink" title="os"></a>os</h2><pre><code>import os
+</code></pre><h2 id="2-4-os"><a href="#2-4-os" class="headerlink" title="2.4 os"></a>2.4 os</h2><pre><code>import os
 #显示当前的工作目录
 print(os.getcwd())
 #切换目录os.chdir(路径)：
@@ -717,7 +717,7 @@ d_m = os.path.getmtime(r&quot;d:\application&quot;)#返回path指向目录或文
 import time
 print(time.strftime(&quot;%Y %m %d %H:%M:%S&quot;,time.localtime(c_a)))
 print(time.strftime(&quot;%Y %m %d %H:%M:%S&quot;,time.localtime(d_m)))
-</code></pre><h2 id="sys"><a href="#sys" class="headerlink" title="sys"></a>sys</h2><pre><code>#argv:加入脚本参数
+</code></pre><h2 id="2-5-sys"><a href="#2-5-sys" class="headerlink" title="2.5 sys"></a>2.5 sys</h2><pre><code>#argv:加入脚本参数
 import sys
 #命令行参数list,第一个元素为程序本身
 print(sys.argv)
@@ -739,7 +739,7 @@ print(sys.platform)#返回操作系统名称
 sys.stdout.write(&apos;please\n&apos;)#标准输出，sys.stdout.flush()制作进度条效果
 val = sys.stdin.readline()[:-1]
 print(val)
-</code></pre><h2 id="shelve"><a href="#shelve" class="headerlink" title="shelve"></a>shelve</h2><pre><code>#简单的k,v将内存数据通过文件持久化的模块，可持久化任何pickle可支持的python数据格式
+</code></pre><h2 id="2-6-shelve"><a href="#2-6-shelve" class="headerlink" title="2.6 shelve"></a>2.6 shelve</h2><pre><code>#简单的k,v将内存数据通过文件持久化的模块，可持久化任何pickle可支持的python数据格式
 #特点是操作方便，而且调用时不用将全部的内容读进内存，通过字典的方式调用
 #序列化
 import shelve
@@ -764,7 +764,7 @@ print(d.get(&quot;name&quot;))
 print(d.get(&quot;info&quot;))
 print(d.get(&quot;time&quot;))
 d.close()
-</code></pre><h2 id="xml"><a href="#xml" class="headerlink" title="xml"></a>xml</h2><h3 id="xml创建"><a href="#xml创建" class="headerlink" title="xml创建"></a>xml创建</h3><pre><code>import xml.etree.ElementTree as ET
+</code></pre><h2 id="2-7-xml"><a href="#2-7-xml" class="headerlink" title="2.7 xml"></a>2.7 xml</h2><h3 id="2-7-1-xml创建"><a href="#2-7-1-xml创建" class="headerlink" title="2.7.1 xml创建"></a>2.7.1 xml创建</h3><pre><code>import xml.etree.ElementTree as ET
 #根节点
 new_xml = ET.Element(&quot;namelist&quot;)
 #子节点
@@ -789,7 +789,7 @@ et = ET.ElementTree(new_xml)#生成对象
 et.write(&quot;test.xml&quot;,encoding=&quot;utf-8&quot;,xml_declaration=True)
 
 ET.dump(new_xml)#打印生成格式
-</code></pre><h3 id="xml处理"><a href="#xml处理" class="headerlink" title="xml处理"></a>xml处理</h3><pre><code>import  xml.etree.ElementTree as ET
+</code></pre><h3 id="2-7-2-xml处理"><a href="#2-7-2-xml处理" class="headerlink" title="2.7.2 xml处理"></a>2.7.2 xml处理</h3><pre><code>import  xml.etree.ElementTree as ET
 
 tree = ET.parse(&quot;xmltest.xml&quot;)
 root = tree.getroot()
@@ -807,7 +807,7 @@ for child in root:
 #只遍历年
 for node in root.iter(&quot;year&quot;):
     print(node.tag,node.text)
-</code></pre><h3 id="xml修改"><a href="#xml修改" class="headerlink" title="xml修改"></a>xml修改</h3><pre><code>import xml.etree.ElementTree as ET
+</code></pre><h3 id="2-7-3-xml修改"><a href="#2-7-3-xml修改" class="headerlink" title="2.7.3 xml修改"></a>2.7.3 xml修改</h3><pre><code>import xml.etree.ElementTree as ET
 
 tree = ET.parse(&quot;xmltest.xml&quot;)
 root = tree.getroot()
@@ -827,7 +827,7 @@ for country in root.findall(&quot;country&quot;):
     if rank &gt;50:
         root.remove(country)
 tree.write(&apos;output.xml&apos;)
-</code></pre><h2 id="configparser"><a href="#configparser" class="headerlink" title="configparser"></a>configparser</h2><h3 id="configparser生成"><a href="#configparser生成" class="headerlink" title="configparser生成"></a>configparser生成</h3><pre><code>import configparser
+</code></pre><h2 id="2-8-configparser"><a href="#2-8-configparser" class="headerlink" title="2.8 configparser"></a>2.8 configparser</h2><h3 id="2-8-1-configparser生成"><a href="#2-8-1-configparser生成" class="headerlink" title="2.8.1 configparser生成"></a>2.8.1 configparser生成</h3><pre><code>import configparser
 #与字典操作相同
 config = configparser.ConfigParser()
 config[&quot;DEFAULT&quot;] = {&apos;ServerAliveInterval&apos;:&apos;45&apos;,
@@ -846,7 +846,7 @@ config[&apos;DEFAULT&apos;][&apos;ForwardX11&apos;]=&apos;yes&apos;
 
 with open(&apos;example.ini&apos;,&apos;w&apos;) as configfile:
     config.write(configfile)
-</code></pre><h3 id="configparser读改"><a href="#configparser读改" class="headerlink" title="configparser读改"></a>configparser读改</h3><pre><code>import configparser
+</code></pre><h3 id="2-8-2-configparser读改"><a href="#2-8-2-configparser读改" class="headerlink" title="2.8.2 configparser读改"></a>2.8.2 configparser读改</h3><pre><code>import configparser
 
 conf = configparser.ConfigParser()
 
@@ -858,7 +858,7 @@ print(conf[&apos;bitbucket.org&apos;][&apos;user&apos;])
 #改写
 sec = conf.remove_section(&apos;bitbucket.org&apos;)
 conf.write(open(&apos;example_mo.ini&apos;,&apos;w&apos;))
-</code></pre><h2 id="hashlib"><a href="#hashlib" class="headerlink" title="hashlib"></a>hashlib</h2><pre><code>import hashlib
+</code></pre><h2 id="2-9-hashlib"><a href="#2-9-hashlib" class="headerlink" title="2.9 hashlib"></a>2.9 hashlib</h2><pre><code>import hashlib
 
 m = hashlib.md5()
 m.update(b&quot;hello&quot;)
@@ -882,7 +882,7 @@ print(s2.hexdigest())
 499cae7df71137c382efff67c03b1c936b4cc4ff
 只要内容相同md5就相同
 &apos;&apos;&apos;
-</code></pre><h2 id="shutil"><a href="#shutil" class="headerlink" title="shutil"></a>shutil</h2><pre><code>#高级的文件、文件夹、压缩包 处理模块
+</code></pre><h2 id="2-10-shutil"><a href="#2-10-shutil" class="headerlink" title="2.10 shutil"></a>2.10 shutil</h2><pre><code>#高级的文件、文件夹、压缩包 处理模块
 import shutil
 #copyfileobj(文件句柄1,文件句柄2)将文件1拷贝到文件2
 f1 = open(&quot;file&quot;,encoding=&apos;utf-8&apos;)
@@ -924,7 +924,7 @@ print(&quot;zip module&quot;)
 z.write(&quot;sys_test.py&quot;)
 print(&quot;zip sys_test&quot;)
 z.close()
-</code></pre><h1 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h1><p>第一部分：</p>
+</code></pre><h1 id="三、正则表达式"><a href="#三、正则表达式" class="headerlink" title="三、正则表达式"></a>三、正则表达式</h1><p>第一部分：</p>
 <pre><code>#匹配字符串
 import re
 #match 匹配,\d+后面取数字，直到取到字符
@@ -1252,7 +1252,7 @@ uef
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#知识点"><span class="nav-number">1.</span> <span class="nav-text">知识点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#模块定义、导入、优化"><span class="nav-number">2.</span> <span class="nav-text">模块定义、导入、优化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义"><span class="nav-number">2.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分类"><span class="nav-number">2.2.</span> <span class="nav-text">分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#导入方法"><span class="nav-number">2.3.</span> <span class="nav-text">导入方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#调用模块"><span class="nav-number">2.3.1.</span> <span class="nav-text">调用模块</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#imoort"><span class="nav-number">2.3.1.1.</span> <span class="nav-text">imoort</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#from-import"><span class="nav-number">2.3.1.2.</span> <span class="nav-text">from import</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#调用包"><span class="nav-number">2.3.2.</span> <span class="nav-text">调用包</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#import的本质"><span class="nav-number">2.4.</span> <span class="nav-text">import的本质</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#import优化"><span class="nav-number">2.5.</span> <span class="nav-text">import优化</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内置模块"><span class="nav-number">3.</span> <span class="nav-text">内置模块</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#time"><span class="nav-number">3.1.</span> <span class="nav-text">time</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#datatime"><span class="nav-number">3.2.</span> <span class="nav-text">datatime</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#random"><span class="nav-number">3.3.</span> <span class="nav-text">random</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实例：验证码生成器"><span class="nav-number">3.3.1.</span> <span class="nav-text">实例：验证码生成器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#os"><span class="nav-number">3.4.</span> <span class="nav-text">os</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sys"><span class="nav-number">3.5.</span> <span class="nav-text">sys</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shelve"><span class="nav-number">3.6.</span> <span class="nav-text">shelve</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#xml"><span class="nav-number">3.7.</span> <span class="nav-text">xml</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#xml创建"><span class="nav-number">3.7.1.</span> <span class="nav-text">xml创建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#xml处理"><span class="nav-number">3.7.2.</span> <span class="nav-text">xml处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#xml修改"><span class="nav-number">3.7.3.</span> <span class="nav-text">xml修改</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#configparser"><span class="nav-number">3.8.</span> <span class="nav-text">configparser</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#configparser生成"><span class="nav-number">3.8.1.</span> <span class="nav-text">configparser生成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#configparser读改"><span class="nav-number">3.8.2.</span> <span class="nav-text">configparser读改</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hashlib"><span class="nav-number">3.9.</span> <span class="nav-text">hashlib</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shutil"><span class="nav-number">3.10.</span> <span class="nav-text">shutil</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#正则表达式"><span class="nav-number">4.</span> <span class="nav-text">正则表达式</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#知识点"><span class="nav-number">1.</span> <span class="nav-text">知识点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一、模块定义、导入、优化"><span class="nav-number">2.</span> <span class="nav-text">一、模块定义、导入、优化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-定义"><span class="nav-number">2.1.</span> <span class="nav-text">1.1 定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-分类"><span class="nav-number">2.2.</span> <span class="nav-text">1.2 分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-导入方法"><span class="nav-number">2.3.</span> <span class="nav-text">1.3 导入方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-1-调用模块"><span class="nav-number">2.3.1.</span> <span class="nav-text">1.3.1 调用模块</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-1-1-imoort"><span class="nav-number">2.3.1.1.</span> <span class="nav-text">1.3.1.1 imoort</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-1-2-from-import"><span class="nav-number">2.3.1.2.</span> <span class="nav-text">1.3.1.2 from import</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-2-调用包"><span class="nav-number">2.3.2.</span> <span class="nav-text">1.3.2 调用包</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-import的本质"><span class="nav-number">2.4.</span> <span class="nav-text">1.4 import的本质</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-5-import优化"><span class="nav-number">2.5.</span> <span class="nav-text">1.5 import优化</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、内置模块"><span class="nav-number">3.</span> <span class="nav-text">二、内置模块</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-time"><span class="nav-number">3.1.</span> <span class="nav-text">2.1 time</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-datatime"><span class="nav-number">3.2.</span> <span class="nav-text">2.2 datatime</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-random"><span class="nav-number">3.3.</span> <span class="nav-text">2.3 random</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-1-实例：验证码生成器"><span class="nav-number">3.3.1.</span> <span class="nav-text">2.3.1 实例：验证码生成器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-os"><span class="nav-number">3.4.</span> <span class="nav-text">2.4 os</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5-sys"><span class="nav-number">3.5.</span> <span class="nav-text">2.5 sys</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-6-shelve"><span class="nav-number">3.6.</span> <span class="nav-text">2.6 shelve</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-7-xml"><span class="nav-number">3.7.</span> <span class="nav-text">2.7 xml</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-1-xml创建"><span class="nav-number">3.7.1.</span> <span class="nav-text">2.7.1 xml创建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-2-xml处理"><span class="nav-number">3.7.2.</span> <span class="nav-text">2.7.2 xml处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-3-xml修改"><span class="nav-number">3.7.3.</span> <span class="nav-text">2.7.3 xml修改</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-8-configparser"><span class="nav-number">3.8.</span> <span class="nav-text">2.8 configparser</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-8-1-configparser生成"><span class="nav-number">3.8.1.</span> <span class="nav-text">2.8.1 configparser生成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-8-2-configparser读改"><span class="nav-number">3.8.2.</span> <span class="nav-text">2.8.2 configparser读改</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-9-hashlib"><span class="nav-number">3.9.</span> <span class="nav-text">2.9 hashlib</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-10-shutil"><span class="nav-number">3.10.</span> <span class="nav-text">2.10 shutil</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、正则表达式"><span class="nav-number">4.</span> <span class="nav-text">三、正则表达式</span></a></li></ol></div>
             
 
           </div>
