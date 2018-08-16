@@ -1,0 +1,1506 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.1.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.1.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="知识点 模块定义、导入、优化 内置模块 正则表达式">
+<meta name="keywords" content="Python3.5学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python3.5学习（五）">
+<meta property="og:url" content="http://5ifish.me/2018/08/14/Python3.5学习（五）/index.html">
+<meta property="og:site_name" content="5iFish&#39;s Blog">
+<meta property="og:description" content="知识点 模块定义、导入、优化 内置模块 正则表达式">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-08-16T08:55:37.746Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python3.5学习（五）">
+<meta name="twitter:description" content="知识点 模块定义、导入、优化 内置模块 正则表达式">
+
+
+
+
+
+
+  <link rel="canonical" href="http://5ifish.me/2018/08/14/Python3.5学习（五）/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Python3.5学习（五） | 5iFish's Blog</title>
+  
+
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?fb8bb0dbe78a50a3c54117ea80b4f231";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> 
+
+<div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">5iFish's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">一坨深沉的屎的宝贝儿</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+          
+  
+  <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+</li>
+
+      
+        
+        
+          
+  
+  <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+</li>
+
+      
+        
+        
+          
+  
+  <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+</li>
+
+      
+        
+        
+          
+  
+  <li class="menu-item menu-item-categories menu-item-active">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+</li>
+
+      
+        
+        
+          
+  
+  <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+</li>
+
+      
+        
+        
+          
+  
+  <li class="menu-item menu-item-commonweal">
+    <a href="/404.html" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />公益 404</a>
+</li>
+
+      
+
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://5ifish.me/2018/08/14/Python3.5学习（五）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="5iFish">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="5iFish's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Python3.5学习（五）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-14T19:50:24+08:00">2018-08-14</time>
+            
+
+            
+            
+              
+                
+              
+            
+
+            
+              
+              <span class="post-meta-divider">|</span>
+              
+
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于：</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-08-16T16:55:37+08:00">2018-08-16</time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Study/" itemprop="url" rel="index"><span itemprop="name">Study</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon"
+            >
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h1><ul>
+<li>模块定义、导入、优化</li>
+<li>内置模块</li>
+<li>正则表达式</li>
+</ul>
+<a id="more"></a>
+<h1 id="模块定义、导入、优化"><a href="#模块定义、导入、优化" class="headerlink" title="模块定义、导入、优化"></a>模块定义、导入、优化</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>模块：本质是python文件，用来从逻辑上组织python代码（变量、函数、类、逻辑），为了实现其中的功能<br>包：本质是目录（必须带有<strong>init</strong>.py）</p>
+<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><p>a:标准库<br>b:开源模块<br>c:自定义模块  </p>
+<blockquote>
+<p><strong><em>注意：为自定义的模块命名时，不要与标准库和电脑上安装的第三方模块名字相同</em></strong></p>
+</blockquote>
+<h2 id="导入方法"><a href="#导入方法" class="headerlink" title="导入方法"></a>导入方法</h2><h3 id="调用模块"><a href="#调用模块" class="headerlink" title="调用模块"></a>调用模块</h3><h4 id="imoort"><a href="#imoort" class="headerlink" title="imoort"></a>imoort</h4><p>import module :调用整个模块<br>使用模块时通过module_name.def_name来调用模块中的方法。</p>
+<pre><code>#目录结构如下：
++--dirname
+|  +--func.py
++--+--main.py
+</code></pre><p>func.py</p>
+<pre><code>#f函数，保存在func.py文件中
+name = &apos;func&apos;
+def show_f():
+    print(&quot;This is in func&quot;)
+</code></pre><p>main.py</p>
+<pre><code>#main.py保存在与func.py相同的目录先
+import func
+name = &apos;main&apos;
+def show_m():
+    print(&quot;This is in main&quot;)
+print(func.name,name)
+func.show_f()
+show_m()
+&apos;&apos;&apos;
+结果为：
+func main
+This is in func
+This is in main
+&apos;&apos;&apos;
+</code></pre><h4 id="from-import"><a href="#from-import" class="headerlink" title="from import"></a>from import</h4><p>from module_name frome def_name:调用模块中的方法<br>使用方法时，直接通过def_name()调用。</p>
+<pre><code>#目录结构如下：
++--dirname
+|  +--func.py
++--+--main.py
+</code></pre><p>func.py  </p>
+<pre><code>#f函数，保存在func.py文件中
+name = &apos;func&apos;
+def show_f():
+    print(&quot;This is in func&quot;)
+</code></pre><p>main.py</p>
+<pre><code>#main.py保存在与func.py相同的目录先
+from func import show_f
+name = &apos;main&apos;
+def show_m():
+    print(&quot;This is in main&quot;)
+#由于没有调用name，因此name为main中的name
+print(name)
+show_f()
+show_m()
+&apos;&apos;&apos;
+结果为：
+main
+This is in func
+This is in main
+&apos;&apos;&apos;
+</code></pre><blockquote>
+<p><strong><em>注意：引用模块中的函数不要与本程序中的函数重名</em></strong></p>
+</blockquote>
+<h3 id="调用包"><a href="#调用包" class="headerlink" title="调用包"></a>调用包</h3><p>直接通过import调用包时候，只调用了包中<strong>init</strong>.py中的内容，并且不能使用包中的其他模块<br>调用模块时，使用frome package_name import moudle_name 来调用</p>
+<blockquote>
+<p><strong><em>注意：包与目录的区别，文件夹中必须包含有<strong>init</strong>.py文件在python中才被识别为包</em></strong></p>
+</blockquote>
+<p>示例文件目录结构如下： </p>
+<pre><code>+--dirname
+|  +--package
+|  |  +--bin
+|  |  |  +--atm.py
+|  |  |  +--__init__.py
+|  |  +--conf
+|  |  |  +--config.py
+|  |  |  +--__init__.py
+|  |  +--__init__.py
++--+--test.py
+</code></pre><p><strong>1.import package:</strong></p>
+<p>test.py内容如下:</p>
+<pre><code>import package
+</code></pre><p>package/bin/atm.py内容如下：</p>
+<pre><code>name = &apos;package/bin/atm&apos;
+print(&apos;this is in&apos;,name)
+</code></pre><p>package/conf/config.py内容如下:</p>
+<pre><code>name = &apos;package/conf/config&apos;
+print(&apos;this is in&apos;,name)
+</code></pre><p>package/<strong>init</strong>.py内容如下:</p>
+<pre><code>name = &apos;package/__init__&apos;
+print(&apos;this is in&apos;,name)
+</code></pre><p>运行test.py我们得到结果如下：</p>
+<pre><code>&apos;&apos;&apos;
+this is in package/__init__
+&apos;&apos;&apos;
+</code></pre><p>可以看到当直接import package时程序只执行了package中的<strong>init</strong>.py</p>
+<p><strong>2.from package import moudle</strong>  </p>
+<p>将上面test.py中的内容改为:</p>
+<pre><code>from package.bin import atm
+</code></pre><p>结果为：</p>
+<pre><code>this is in package/__init__
+this is in package/bin/atm
+</code></pre><p>可以发现from import的方式调用包时，遇到包也会首先执行包中的<strong>init</strong>模块，再执行其他模块</p>
+<h2 id="import的本质"><a href="#import的本质" class="headerlink" title="import的本质"></a>import的本质</h2><p>import本质就是路径搜索和搜索路径，导入模块的本质就是把python文件解释一遍。导入包的本质就是执行<strong>init</strong>.py文件</p>
+<p>下面根据上一小节的package示例来详细说明import的本质<br>在上一小节中我们使用from package import moudle时test.py文件可以直接通过from package.bin import atm来调用atm模块。<br>接下来我们通过config.py文件来调用atm模块。<br>config.py中的内容改为：</p>
+<pre><code>from package.bin import moudle
+name = &apos;package/__init__&apos;
+print(&apos;this is in&apos;,name)
+</code></pre><p>我们依然通过from package.bin import atm方式来调用atm模块，运行一下看看会发生什么：</p>
+<pre><code>&apos;&apos;&apos;
+ModuleNotFoundError: No module named &apos;package&apos;
+&apos;&apos;&apos;
+</code></pre><p>报错：没有叫package的模块名。<br>what???我们创建的文件夹下面明明有package模块。<br>我们来看看问题出来哪里，在本节中我们说了Import就是路径搜索，那么我们需要调用一些模块来看一下系统搜索模块的路径列表。<br>下面是一些与文件路径有关的命令</p>
+<pre><code>os.path.abspath(__file__)#获取文件的物理路径
+os.path.dirname()#获取上一级目录名
+sys.path#python搜索模块的路径，以列表形式保存
+sys.path.append()#将路径添加到搜索路径中
+sys.path.insert(0,path)#插入第一位
+os.getcwd()#获取当前工作路径
+&apos;&apos;&apos;
+os.path.abspath(__file__)与os.getcwd()本质区别:
+getcwd返回的是程序的工作的目录，并不是所在文件的物理路径
+abspath(__file__)返回的是程序的物理路径，不受当前工作目录影响
+&apos;&apos;&apos;
+</code></pre><p>我们先来看一下sys.path,config.py中的内容改为：</p>
+<pre><code>import sys
+name = &apos;package/conf/config&apos;
+print(&apos;this is in&apos;,name)
+print(sys.path)
+</code></pre><p>结果为:</p>
+<pre><code>this is in package/conf/config
+[&apos;D:\\Study\\Python练习\\PycharmProjects\\01. PY基础\\Day5\\module\\package\\conf&apos;, &apos;D:\\Study\\Python练习\\PycharmProjects\\01. PY基础&apos;, &apos;D:\\Study\\Python练习\\PycharmProjects\\01. PY基础\\venv\\Scripts\\python36.zip&apos;, &apos;C:\\Users\\zt122\\AppData\\Local\\Programs\\Python\\Python36\\DLLs&apos;, &apos;C:\\Users\\zt122\\AppData\\Local\\Programs\\Python\\Python36\\lib&apos;, &apos;C:\\Users\\zt122\\AppData\\Local\\Programs\\Python\\Python36&apos;, &apos;D:\\Study\\Python练习\\PycharmProjects\\01. PY基础\\venv&apos;, &apos;D:\\Study\\Python练习\\PycharmProjects\\01. PY基础\\venv\\lib\\site-packages&apos;, &apos;D:\\Study\\Python练习\\PycharmProjects\\01. PY基础\\venv\\lib\\site-packages\\setuptools-28.8.0-py3.6.egg&apos;, &apos;C:\\Program Files\\JetBrains\\PyCharm 2018.1.4\\helpers\\pycharm_matplotlib_backend&apos;]
+</code></pre><p>第一个为运行的文件所在的目录，第二个为pycharm创建项目时候自动添加的项目目录，其他均为自带的标准库和第三方库的目录。<br>当config.py在import的时候，仅仅搜索了conf文件夹。这里当然没有package。因此我们在调用时应该在系统中加入package所在的目录<br>config.py应改为：</p>
+<pre><code>import sys,os
+package_dirpath =  os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.append(package_dirpath)
+from package.bin import atm
+name = &apos;package/conf/config&apos;
+print(&apos;this is in&apos;,name)
+</code></pre><p>结果为：</p>
+<pre><code>this is in package/__init__
+this is in package/bin/atm
+this is in package/conf/config
+</code></pre><p>我们发现只要调用package就会执行一遍<strong>init</strong>.py模块，atm模块也如愿被成功调用</p>
+<h2 id="import优化"><a href="#import优化" class="headerlink" title="import优化"></a>import优化</h2><p>1.使用import module来调用模块时，每次module.func()都会寻找一次模块。<br>而使用from module import func时候，调用func不同寻找模块直接调用，需要注意的是调用的函数名不要与程序中的有重复的。</p>
+<p>2.在做程序的时候我们常常采用软件目录的规范来写程序，但是就会出现import的时候添加在搜索路径列表中的路径过多，可能存在相同的模块名在不同的路径中出现，在调用的时候系统会调用先添加进去的模块，就会出现错误。  </p>
+<blockquote>
+<p><strong><em>建议：个人感觉比较好的解决办法是通过将软件整体的目录所在的路径添加到列表中,之后都采用包调用的方式来调用不同目录中的模块，这样我们只需要在程序的主入口添加路径，其他地方都通过from package import moudle的方式调用即可。这样有效避免的搜索路径的困扰</em></strong></p>
+</blockquote>
+<h1 id="内置模块"><a href="#内置模块" class="headerlink" title="内置模块"></a>内置模块</h1><h2 id="time"><a href="#time" class="headerlink" title="time"></a>time</h2><pre><code>#1. time 格式化字符串
+#2. time 时间戳
+import time
+print(time.time())
+#3. 元组形式
+print(time.localtime())
+#时区与UTC相比，早的为-，28800/3600=8，中国在utc+8区
+print(time.timezone)
+#time.sleep()睡几秒
+time.sleep(1)
+#时间戳转换成utc时间元组
+print(time.gmtime())
+#时间戳转换为本地时区元组
+print(time.localtime())
+x=time.localtime()
+print(x)
+#调出年：
+print(x.tm_year)
+#查找时间戳为一年的第多少天：
+print(x.tm_yday)
+#将元组的形式转换为时间戳
+print(time.mktime(x))
+#strftime(format,tuple)元组转换为格式化字符串
+y = time.strftime(&quot;%Y-%m-%d %H:%M:%S&quot;,x)
+print(y)
+#strptime(x,format)格式化字符串转化成元组
+print(time.strptime(y,&quot;%Y-%m-%d %H:%M:%S&quot;))
+#asctime():转换元组到字符串默认格式：星期 月 日期 时间 年
+print(time.asctime())#Sun Jul 22 15:01:07 2018
+#ctime():转换时间戳到字符串模式
+</code></pre><h2 id="datatime"><a href="#datatime" class="headerlink" title="datatime"></a>datatime</h2><pre><code>import  datetime
+
+#显示当前时间
+print(datetime.datetime.now())
+#对datetime增减：
+# datetime.timedelta()
+# (正数加负数减)，对小时操作：hours = 3
+s = datetime.datetime.now()
+print(s+datetime.timedelta(3))
+print(s+datetime.timedelta(hours=3))
+print(s+datetime.timedelta(minutes=-2))
+#时间替换
+c_time = datetime.datetime.now()
+print(c_time.replace(day=21,month=6))
+</code></pre><h2 id="random"><a href="#random" class="headerlink" title="random"></a>random</h2><pre><code>#Author:zt
+import random
+#random()随机[0,1)之间的小数
+print(random.random())
+#randint(1,7)随机[a,b]之间的整数
+print(random.randint(1,7))
+#randrange(1,3)随机[1,7)之间的整数，不包含7
+print(random.randrange(1,3))#结果为1或2
+#random.choice(&quot;hello&quot;)随机从序列(可以通过[数字]或者(数字)取值的)中取值
+#可以是字符串、列表
+#不可以是元组、字典
+x= [&apos;你好&apos;,&quot;再见&quot;]
+print(random.choice(x))
+y = &apos;你好啊&apos;
+print(random.choice(y))
+#random.sample(序列,长度)
+# 返回n个随机从序列中提取的元素的列表
+print(random.sample(&quot;jfdisofjo&quot;,3))
+#uniform:可以指定区间取值，浮点数
+print(random.uniform(1,100))
+#shuffle(items)洗牌功能：将列表都打乱，随机排序
+random.shuffle(x)
+print(x)
+</code></pre><h3 id="实例：验证码生成器"><a href="#实例：验证码生成器" class="headerlink" title="实例：验证码生成器"></a>实例：验证码生成器</h3><pre><code>#随机生成包含数字和字母的验证码
+import random
+
+n = int(input(&quot;请输入要定义几位的验证码&quot;))
+while True:
+    #创建空验证码
+    checkcode = &quot;&quot;
+    #判断是否存在字符
+    isstr = False
+    for i in range(n):
+        current = random.randrange(0,n)
+        #当current值为其所在位置编号时，则输出字母
+        if current == i:
+            tmp = chr(random.randint(65,90))
+            isstr = True
+        else:
+            tmp = str(random.randint(0,9))
+        checkcode += tmp
+    #判断：如果验证码中存在字母打印并退出
+    if isstr:
+        print(checkcode)
+        break
+</code></pre><h2 id="os"><a href="#os" class="headerlink" title="os"></a>os</h2><pre><code>import os
+#显示当前的工作目录
+print(os.getcwd())
+#切换目录os.chdir(路径)：
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
+#os.curdir返回当前目录 .
+print(os.curdir)
+#os.pardir返回当前目录的父目录 ..
+print(os.pardir)
+#os.makedirs(r&quot;路径&quot;):递归创建目录，从父级目录一直创建到最终目录
+#os.makedirs(r&quot;D:\Study\Python练习\PycharmProjects\PY1\Day5\abc&quot;)
+#os.removedirs:若目录为空则删除，并递归到上一级目录，依次类推
+# os.removedirs(r&quot;D:\Study\Python练习\PycharmProjects\PY1\Day5\abc&quot;)
+#os.mkdir(dirname):只能在已有目录下创建目录，不能递归创建
+#os.makedirs(r&quot;D:\Study\Python练习\PycharmProjects\PY1\Day5\abc&quot;)
+#os.rmdir(dirname):只删除目标目录，中间有空目录也不删除
+# os.makedirs(r&quot;D:\Study\Python练习\PycharmProjects\PY1\Day5\abc&quot;)
+#os.listdir(dirname):显示当前目录下所有的文件名，返回为列表
+os.listdir(os.getcwd())
+#os.remove:删除一个文件
+# os.remove(r&quot;D:\Study\Python练习\PycharmProjects\PY1\Day5\test.py&quot;)
+#os.rename(&quot;&quot;oldname,&quot;newname&quot;)重命名
+print(os.stat(os.path.abspath(__file__)))
+print(os.sep)#输出指定平台的目录分隔符
+print(os.linesep)#输出当前平台使用的行终止符 回车
+print(os.pathsep)#输出用于分割文件路径的字符串
+print(os.name)#输出字符串指示当前使用平台。win-&gt;nt linux-&gt;\n
+print(os.system(&quot;ipconfig&quot;))#运行cmd命令，直接显示
+print(os.environ)#获取系统环境变量
+os.path.abspath(__file__)#获取文件的绝对路径
+print(os.path.split(os.getcwd()))#分割路径,返回连个元组，分割成目录和文件名二元组
+print(os.path.basename(os.path.abspath(__file__)))#返回path最后一个文件名
+print(os.path.exists(os.path.abspath(__file__)))#如果path存在返回True，不存在返回False
+print(os.path.isabs(os.path.abspath(__file__)))#如果是绝对路径则返回True
+print(os.path.isfile(os.path.abspath(__file__)))#如果path是一个存在的文件返回True
+print(os.path.isdir(os.path.abspath(__file__)))#如果path是一个存在的目录则返回True
+print(os.path.join(r&quot;c:\program&quot;,&apos;a&apos;,&apos;b&apos;,r&apos;d:\abc&apos;,&apos;c&apos;,&apos;d&apos;))#多路径组合返回，第一个绝对路径之前被忽略
+c_a =os.path.getatime(r&quot;c:\windows&quot;)#返回path指向目录或文件最后存取时间
+d_m = os.path.getmtime(r&quot;d:\application&quot;)#返回path指向目录或文件最后修改时间
+import time
+print(time.strftime(&quot;%Y %m %d %H:%M:%S&quot;,time.localtime(c_a)))
+print(time.strftime(&quot;%Y %m %d %H:%M:%S&quot;,time.localtime(d_m)))
+</code></pre><h2 id="sys"><a href="#sys" class="headerlink" title="sys"></a>sys</h2><pre><code>#argv:加入脚本参数
+import sys
+#命令行参数list,第一个元素为程序本身
+print(sys.argv)
+&apos;&apos;&apos;
+(venv) D:\Study\Python练习\PycharmProjects\PY1\Day5&gt;python sys_test.py 1 2 3
+[&apos;sys_test.py&apos;, &apos;1&apos;, &apos;2&apos;, &apos;3&apos;]
+
+(venv) D:\Study\Python练习\PycharmProjects\PY1\Day5&gt;
+
+&apos;&apos;&apos;
+#exit(n)退出程序，正常退出为0
+#sys.exit(0)
+#version:获取python版本信息
+print(sys.version)
+#maxsize:返回最大int值
+print(sys.maxsize)
+print(sys.path)#返回模块搜索路径
+print(sys.platform)#返回操作系统名称
+sys.stdout.write(&apos;please\n&apos;)#标准输出，sys.stdout.flush()制作进度条效果
+val = sys.stdin.readline()[:-1]
+print(val)
+</code></pre><h2 id="shelve"><a href="#shelve" class="headerlink" title="shelve"></a>shelve</h2><pre><code>#简单的k,v将内存数据通过文件持久化的模块，可持久化任何pickle可支持的python数据格式
+#特点是操作方便，而且调用时不用将全部的内容读进内存，通过字典的方式调用
+#序列化
+import shelve
+import datetime
+d = shelve.open(&apos;shelve_test&apos;) #打开一个文件
+
+info = {
+    &apos;age&apos;:22,
+    &apos;job&apos;:&apos;it&apos;
+}
+name = [&quot;zt&quot;,&quot;rain&quot;,&quot;test&quot;]
+d[&quot;name&quot;] = name#持久化列表
+d[&quot;info&quot;] = info #持久化字典
+d[&quot;time&quot;] = datetime.datetime.now()
+d.close()
+&apos;&apos;&apos;
+生成三个文件.bak.dat.dir
+&apos;&apos;&apos;
+#反序列化：
+d=shelve.open(&apos;shelve_test&apos;)
+print(d.get(&quot;name&quot;))
+print(d.get(&quot;info&quot;))
+print(d.get(&quot;time&quot;))
+d.close()
+</code></pre><h2 id="xml"><a href="#xml" class="headerlink" title="xml"></a>xml</h2><h3 id="xml创建"><a href="#xml创建" class="headerlink" title="xml创建"></a>xml创建</h3><pre><code>import xml.etree.ElementTree as ET
+#根节点
+new_xml = ET.Element(&quot;namelist&quot;)
+#子节点
+#传递参数为：父节点，子节点名,标签属性
+person = ET.SubElement(new_xml,&quot;person&quot;,attrib= {&quot;enrolled&quot;:&quot;yes&quot;})
+name =  ET.SubElement(person,&quot;name&quot;)
+age = ET.SubElement(person,&quot;age&quot;,attrib={&quot;checked&quot;:&quot;no&quot;})
+sex = ET.SubElement(person,&quot;sex&quot;)
+#创建标签内容
+name.text = &quot;zle&quot;
+sex.text = &quot;女&quot;
+age.text = &quot;23&quot;
+person2 = ET.SubElement(new_xml,&quot;person&quot;,attrib= {&quot;enrolled&quot;:&quot;no&quot;})
+name2 =  ET.SubElement(person2,&quot;name&quot;)
+age2 = ET.SubElement(person2,&quot;age&quot;)
+sex2 = ET.SubElement(person2,&quot;sex&quot;)
+name2.text = &quot;wss&quot;
+age2.text = &apos;19&apos;
+sex2.text = &quot;男&quot;
+
+et = ET.ElementTree(new_xml)#生成对象
+et.write(&quot;test.xml&quot;,encoding=&quot;utf-8&quot;,xml_declaration=True)
+
+ET.dump(new_xml)#打印生成格式
+</code></pre><h3 id="xml处理"><a href="#xml处理" class="headerlink" title="xml处理"></a>xml处理</h3><pre><code>import  xml.etree.ElementTree as ET
+
+tree = ET.parse(&quot;xmltest.xml&quot;)
+root = tree.getroot()
+#打印标签名
+print(root.tag)
+#遍历xml
+for child in root:
+    #打印标签名和属性
+    print(child.tag,child.attrib)
+    print(&apos;--------------------&apos;)
+    for i in child:
+        #打印标签和内容
+        print(i.tag,i.text)
+
+#只遍历年
+for node in root.iter(&quot;year&quot;):
+    print(node.tag,node.text)
+</code></pre><h3 id="xml修改"><a href="#xml修改" class="headerlink" title="xml修改"></a>xml修改</h3><pre><code>import xml.etree.ElementTree as ET
+
+tree = ET.parse(&quot;xmltest.xml&quot;)
+root = tree.getroot()
+
+#修改
+for node in root.iter(&quot;year&quot;):
+    new_year = int(node.text)+1
+    node.text = str(new_year)
+    #set:添加属性
+    node.set(&quot;updated&quot;,&quot;Yes&quot;)
+
+tree.write(&quot;xmltest.xml&quot;)
+
+#删除node
+for country in root.findall(&quot;country&quot;):
+    rank = int(country.find(&apos;rank&apos;).text)
+    if rank &gt;50:
+        root.remove(country)
+tree.write(&apos;output.xml&apos;)
+</code></pre><h2 id="configparser"><a href="#configparser" class="headerlink" title="configparser"></a>configparser</h2><h3 id="configparser生成"><a href="#configparser生成" class="headerlink" title="configparser生成"></a>configparser生成</h3><pre><code>import configparser
+#与字典操作相同
+config = configparser.ConfigParser()
+config[&quot;DEFAULT&quot;] = {&apos;ServerAliveInterval&apos;:&apos;45&apos;,
+                     &apos;Compression&apos;:&apos;yes&apos;,
+                     &apos;CompressionLevel&apos;:&apos;9&apos;}
+
+config[&apos;bitbucket.org&apos;] = {}
+config[&apos;bitbucket.org&apos;][&apos;User&apos;] = &apos;hg&apos;
+
+config[&apos;topsecret.server.com&apos;]={}
+topsecret= config[&apos;topsecret.server.com&apos;]
+topsecret[&apos;Host Port&apos;] = &apos;50022&apos;
+topsecret[&apos;ForwardX11&apos;] = &apos;no&apos;
+
+config[&apos;DEFAULT&apos;][&apos;ForwardX11&apos;]=&apos;yes&apos;
+
+with open(&apos;example.ini&apos;,&apos;w&apos;) as configfile:
+    config.write(configfile)
+</code></pre><h3 id="configparser读改"><a href="#configparser读改" class="headerlink" title="configparser读改"></a>configparser读改</h3><pre><code>import configparser
+
+conf = configparser.ConfigParser()
+
+conf.read(&quot;example.ini&quot;)
+#不打印DEFAULT，打印其他的&quot;key&quot;
+print(conf.sections())
+
+print(conf[&apos;bitbucket.org&apos;][&apos;user&apos;])
+#改写
+sec = conf.remove_section(&apos;bitbucket.org&apos;)
+conf.write(open(&apos;example_mo.ini&apos;,&apos;w&apos;))
+</code></pre><h2 id="hashlib"><a href="#hashlib" class="headerlink" title="hashlib"></a>hashlib</h2><pre><code>import hashlib
+
+m = hashlib.md5()
+m.update(b&quot;hello&quot;)
+print(m.hexdigest())
+m.update(b&quot;It&apos;s me&quot;)
+print(m.hexdigest())
+m.update(b&quot;It&apos;s been a long time since last time we...&quot;)
+m2 = hashlib.md5()
+m2.update(b&quot;helloIt&apos;s me&quot;)
+print(m2.hexdigest())
+
+s2 = hashlib.sha1()
+s2.update(b&quot;helloIt&apos;s me&quot;)
+print(s2.hexdigest())
+
+&apos;&apos;&apos;
+结果为：
+5d41402abc4b2a76b9719d911017c592
+64f69d95135bc13d4827f871b37f780f
+64f69d95135bc13d4827f871b37f780f
+499cae7df71137c382efff67c03b1c936b4cc4ff
+只要内容相同md5就相同
+&apos;&apos;&apos;
+</code></pre><h2 id="shutil"><a href="#shutil" class="headerlink" title="shutil"></a>shutil</h2><pre><code>#高级的文件、文件夹、压缩包 处理模块
+import shutil
+#copyfileobj(文件句柄1,文件句柄2)将文件1拷贝到文件2
+f1 = open(&quot;file&quot;,encoding=&apos;utf-8&apos;)
+f2 = open(&quot;file_copy&quot;,&apos;w&apos;,encoding=&apos;utf-8&apos;)
+shutil.copyfileobj(f1,f2)
+f1.close()
+f2.close()
+#copyfile(文件名1,文件名2)直接输入文件名就可以拷贝
+shutil.copyfile(&quot;file&quot;,&quot;file_copy2&quot;)
+#copymode(文件1，文件2)仅copy权限，不copy用户、属组内容
+#copystat():拷贝状态信息不copy内容
+shutil.copystat(&quot;file&quot;,&quot;file_copy2&quot;)
+#copy:拷贝文件和权限
+#copy2:拷贝文件和状态信息
+#copytree()递归的copy,完整copy目录
+shutil.copytree(&quot;module&quot;,&quot;shutil_module&quot;)
+#rmtree()递归的删除目录,全部删除目录下的所有东西
+shutil.rmtree(&quot;shutil_module&quot;)
+&apos;&apos;&apos;
+make_archive(base_name,format,...)
+创建压缩包并返回文件路径
+base_name:压缩包的文件名，可以是路径
+format:压缩包的种类:&quot;zip&quot;,&quot;tar&quot;,&quot;bztar&quot;,&quot;gztar&quot;
+root_dir:要压缩的文件夹路径（默认当前）
+owner:用户，默认当前
+group:组，默认当前
+logger:用于记录日志
+&apos;&apos;&apos;
+#返回压缩包文件名
+a=shutil.make_archive(&apos;module&apos;,&apos;zip&apos;,r&apos;D:\Study\Python练习\PycharmProjects\PY1\Day5\module&apos;)
+print(a)
+#对压缩包处理是调用ZipFile和TarFile方法
+
+#zipfile模块,可以把压缩包打开一个一个压缩文件
+import zipfile
+z = zipfile.ZipFile(&quot;module_test.zip&quot;,&apos;w&apos;)
+z.write(&quot;module.zip&quot;)
+print(&quot;zip module&quot;)
+z.write(&quot;sys_test.py&quot;)
+print(&quot;zip sys_test&quot;)
+z.close()
+</code></pre><h1 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h1><p>第一部分：</p>
+<pre><code>#匹配字符串
+import re
+#match 匹配,\d+后面取数字，直到取到字符
+res = re.match(&quot;^张三\d+&quot;,&apos;张三213来啊&apos;)
+print(res.group())
+#&apos;.&apos;默认匹配除\n之外的任意字符，若指定flag DOTALL则匹配任意字符，包括换行
+res2 = re.match(&quot;^.+\d&quot;,&apos;张三213来啊\n666&apos;)
+print(res2.group())
+#&apos;^&apos;匹配字符开头,若指定flags MULTILINE,也可匹配上(r&quot;^a&quot;,&quot;\nabc\nee&quot;)
+#&apos;.&apos;
+res3 = re.match(&quot;^&quot;,&quot;张三0342来不来&quot;)
+print(res3)
+#match:从头匹配
+#search使用最多
+#a$表示匹配到以a为结尾，$判断是不是以某一个字符结尾
+res4 = re.search(&quot;3.+$&quot;,&quot;张三0342来不来&quot;)
+print(res4)
+#a.+b表示从a匹配到b
+#&quot;R[a-z]+a&quot;表示从R取字母一直到第一个a
+res5 = re.search(&quot;R[a-z]+i&quot;,&quot;CzRsdjfi45a&quot;)
+print(res5)
+#&quot;R[a-zA-Z]+a&quot;可以取到R-a之间的大小写字母
+#ab*:匹配*前的数字一次或多次,findall返回全部匹配值
+res6 =re.findall(&quot;ab*&quot;,&quot;dfiabdueabbab&quot;)
+print(res6)
+#ab?匹配?前1个字符一次或0次，表示b不确定有，先匹配到a或者ab都可以返回
+res7 = re.search(&quot;ab?&quot;,&quot;aaaababbbaa&quot;)
+print(res7)
+#{n}表示想匹配几个，[0-9]{3}表示要匹配连续的三个0-9数字
+res8 =  re.search(&quot;[a-z]{4}&quot;,&quot;324sdnijf354&quot;)
+print(res8)
+#{a,b}表示匹配连续的字母，最多b次，最少a次
+res8 =  re.findall(&quot;[a-z]{1,4}&quot;,&quot;sdf324sdnijf354&quot;)
+print(res8)
+#|表示匹配|左面或者|右面的字符
+res9 = re.search(&quot;abc|ACB&quot;,&quot;abcda|BACBD&quot;)
+print(res9.group())
+#(...)分组匹配
+res10 = re.search(&quot;(abc){2}(\|\|=){2}&quot;,&quot;abcabc||=||=dddf&quot;)
+print(res10.group())
+
+&apos;&apos;&apos;
+结果为：
+张三213
+张三213
+&lt;_sre.SRE_Match object; span=(0, 0), match=&apos;&apos;&gt;
+&lt;_sre.SRE_Match object; span=(3, 9), match=&apos;342来不来&apos;&gt;
+&lt;_sre.SRE_Match object; span=(2, 8), match=&apos;Rsdjfi&apos;&gt;
+[&apos;ab&apos;, &apos;abb&apos;, &apos;ab&apos;]
+&lt;_sre.SRE_Match object; span=(0, 1), match=&apos;a&apos;&gt;
+&lt;_sre.SRE_Match object; span=(3, 7), match=&apos;sdni&apos;&gt;
+[&apos;sdf&apos;, &apos;sdni&apos;, &apos;jf&apos;]
+abc
+abcabc||=||=
+&apos;&apos;&apos;
+</code></pre><p>第二部分：</p>
+<pre><code>import re
+#\A以什么开头，\Z以什么结尾
+res0 = re.search(&quot;\A[0-9]+[a-z]+\Z&quot;,&quot;43543nuns&quot;)
+print(res0.group())
+#\D非数字
+res1 = re.search(&quot;\D+&quot;,&quot;43543_=nuns&quot;)
+print(res1.group())
+#\w:匹配数字或字母
+#\W匹配非数字或字符
+#\s匹配空白字符
+res2 = re.search(&quot;\s+&quot;,&quot;43543\n\t_=nuns&quot;)
+print(res2.group())
+#分组匹配：(?P&lt;name&gt;[range]+),使用groupdict输出为字典
+res3 = re.search(&quot;(?P&lt;id&gt;[0-9])&quot;,&quot;234sdfjid1234&quot;)
+print(res3.groupdict())
+# mail = input(&quot;请输入邮箱&quot;)
+# res4 = re.search(&quot;(?P&lt;mailid&gt;\w+)\W(?P&lt;mailtype&gt;\w+)\W(?P&lt;domain&gt;[a-zA-Z]+)&quot;
+#                  ,mail)
+# print(res4.groupdict())
+#split分割
+res5 = re.split(&quot;[0-9]+&quot;,&quot;djsfi324dsfji342fjsi564&quot;)
+print(res5)
+
+#sub:替换,sub(pattern,rep1,string,count=all,flags=0)
+res5 = re.sub(&quot;[0-9]+&quot;,&quot;|&quot;,&quot;djsfi324dsfji342fjsi564&quot;,2)
+print(res5)
+#反斜杠的困扰
+res6 = re.search(r&quot;\\&quot;,r&quot;abcd\12&quot;)
+print(res6.group())
+#忽略大小写：flags = re.I
+res7 = re.search(&apos;[a-z]+&apos;,&apos;sfdiAS&apos;,flags=re.I)
+print(res7.group())
+
+#忽略起始换行
+res8 = re.compile().search(&quot;^a.+&quot;,&quot;\nadinenb\niduenf435&quot;,flags=re.M)
+print(res8.group())
+#s：匹配任意模式
+res9  = re.search(&quot;a.+f&quot;,&quot;dai\nuefs&quot;,flags=re.S)
+print(res9.group())
+
+
+&apos;&apos;&apos;
+结果为：
+43543nuns
+_=nuns
+
+
+{&apos;id&apos;: &apos;2&apos;}
+[&apos;djsfi&apos;, &apos;dsfji&apos;, &apos;fjsi&apos;, &apos;&apos;]
+djsfi|dsfji|fjsi564
+\
+sfdiAS
+adinenb
+ai
+uef
+&apos;&apos;&apos;
+</code></pre>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python3-5学习/" rel="tag"># Python3.5学习</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/16/Python3.5学习（四）/" rel="next" title="Python3.5学习（四）">
+                <i class="fa fa-chevron-left"></i> Python3.5学习（四）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">5iFish</p>
+              <p class="site-description motion-element" itemprop="description">个人微博</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/5iFish" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:1224179632@qq.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://plus.google.com/113894987237136449595" target="_blank" title="Google"><i class="fa fa-fw fa-google"></i>Google</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://weibo.com/2207346753" target="_blank" title="微博"><i class="fa fa-fw fa-globe"></i>微博</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#知识点"><span class="nav-number">1.</span> <span class="nav-text">知识点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#模块定义、导入、优化"><span class="nav-number">2.</span> <span class="nav-text">模块定义、导入、优化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义"><span class="nav-number">2.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分类"><span class="nav-number">2.2.</span> <span class="nav-text">分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#导入方法"><span class="nav-number">2.3.</span> <span class="nav-text">导入方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#调用模块"><span class="nav-number">2.3.1.</span> <span class="nav-text">调用模块</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#imoort"><span class="nav-number">2.3.1.1.</span> <span class="nav-text">imoort</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#from-import"><span class="nav-number">2.3.1.2.</span> <span class="nav-text">from import</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#调用包"><span class="nav-number">2.3.2.</span> <span class="nav-text">调用包</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#import的本质"><span class="nav-number">2.4.</span> <span class="nav-text">import的本质</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#import优化"><span class="nav-number">2.5.</span> <span class="nav-text">import优化</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内置模块"><span class="nav-number">3.</span> <span class="nav-text">内置模块</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#time"><span class="nav-number">3.1.</span> <span class="nav-text">time</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#datatime"><span class="nav-number">3.2.</span> <span class="nav-text">datatime</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#random"><span class="nav-number">3.3.</span> <span class="nav-text">random</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实例：验证码生成器"><span class="nav-number">3.3.1.</span> <span class="nav-text">实例：验证码生成器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#os"><span class="nav-number">3.4.</span> <span class="nav-text">os</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sys"><span class="nav-number">3.5.</span> <span class="nav-text">sys</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shelve"><span class="nav-number">3.6.</span> <span class="nav-text">shelve</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#xml"><span class="nav-number">3.7.</span> <span class="nav-text">xml</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#xml创建"><span class="nav-number">3.7.1.</span> <span class="nav-text">xml创建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#xml处理"><span class="nav-number">3.7.2.</span> <span class="nav-text">xml处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#xml修改"><span class="nav-number">3.7.3.</span> <span class="nav-text">xml修改</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#configparser"><span class="nav-number">3.8.</span> <span class="nav-text">configparser</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#configparser生成"><span class="nav-number">3.8.1.</span> <span class="nav-text">configparser生成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#configparser读改"><span class="nav-number">3.8.2.</span> <span class="nav-text">configparser读改</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hashlib"><span class="nav-number">3.9.</span> <span class="nav-text">hashlib</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shutil"><span class="nav-number">3.10.</span> <span class="nav-text">shutil</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#正则表达式"><span class="nav-number">4.</span> <span class="nav-text">正则表达式</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">5iFish</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Gemini</a> v6.1.0</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv" title="总访客量">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="site-pv" title="总访问量">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_sphere.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.1.0"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

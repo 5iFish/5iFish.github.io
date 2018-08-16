@@ -109,7 +109,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://5ifish.me/images/函数即变量.jpg">
 <meta property="og:image" content="http://5ifish.me/images/软件目录规范.jpg">
-<meta property="og:updated_time" content="2018-07-16T13:08:36.027Z">
+<meta property="og:updated_time" content="2018-08-14T11:57:47.542Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python3.5学习（四）">
 <meta name="twitter:description" content="知识点 装饰器 生成器 迭代器 Json与pickle数据序列化 软件目录结构规范">
@@ -381,7 +381,7 @@
               
                 <span class="post-meta-item-text">更新于：</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-07-16T21:08:36+08:00">2018-07-16</time>
+              <time title="更新于" itemprop="dateModified" datetime="2018-08-14T19:57:47+08:00">2018-08-14</time>
             
           </span>
 
@@ -448,7 +448,7 @@
 </ul>
 <a id="more"></a>
 <hr>
-<h1 id="一、装饰器"><a href="#一、装饰器" class="headerlink" title="一、装饰器"></a>一、装饰器</h1><h2 id="1-定义"><a href="#1-定义" class="headerlink" title="1. 定义"></a>1. 定义</h2><p>本质是函数，（装饰其他函数）就是为其他函数添加附加功能</p>
+<h1 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h1><h2 id="1-定义"><a href="#1-定义" class="headerlink" title="1. 定义"></a>1. 定义</h2><p>本质是函数，（装饰其他函数）就是为其他函数添加附加功能</p>
 <pre><code>&apos;&apos;&apos;
 #例：计算程序运行消耗的时间
 import  time
@@ -592,7 +592,7 @@ index()
 home()
 bbs()
 </code></pre><hr>
-<h1 id="二、生成器"><a href="#二、生成器" class="headerlink" title="二、生成器"></a>二、生成器</h1><h2 id="1-特点"><a href="#1-特点" class="headerlink" title="1. 特点"></a>1. 特点</h2><ol>
+<h1 id="生成器"><a href="#生成器" class="headerlink" title="生成器"></a>生成器</h1><h2 id="1-特点"><a href="#1-特点" class="headerlink" title="1. 特点"></a>1. 特点</h2><ol>
 <li>避免内存浪费</li>
 <li>循环生成所需数据</li>
 <li>生成器只有在调用时才会生成相应的数据</li>
@@ -663,7 +663,7 @@ def producer(name):
         c2.send(i)
 producer(&quot;alex&quot;)
 #协程
-</code></pre><h1 id="三、迭代器"><a href="#三、迭代器" class="headerlink" title="三、迭代器"></a>三、迭代器</h1><p>可直接作用于for循环的数据类型有以下几种：</p>
+</code></pre><h1 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h1><p>可直接作用于for循环的数据类型有以下几种：</p>
 <p>一类是集合数据类型，如list、tuple、dict、set、str等；</p>
 <p>一类是generator，包括生成器和带yiel的generator function</p>
 <p>这些可以直接作用于for循环的对象统称为可迭代对象：Iterable.</p>
@@ -686,7 +686,7 @@ print(c)
 print(c.__next__())
 print(c.__next__())
 print(c.__next__())
-</code></pre><h1 id="四、json与pickle序列化"><a href="#四、json与pickle序列化" class="headerlink" title="四、json与pickle序列化"></a>四、json与pickle序列化</h1><p>方法：dumps,dump,loads,load</p>
+</code></pre><h1 id="json与pickle序列化"><a href="#json与pickle序列化" class="headerlink" title="json与pickle序列化"></a>json与pickle序列化</h1><p>方法：dumps,dump,loads,load</p>
 <p>dumps和dump，load和loads的区别：</p>
 <p>dumps是将对象序列化</p>
 <p>dump是将对象序列化并保存到文件中</p>
@@ -744,7 +744,7 @@ f=open(&quot;test.txt&quot;,&apos;rb&apos;)
 data = pickle.loads(f.read())
 
 print(data[&apos;func&apos;](&quot;Alex&quot;))
-</code></pre><h2 id="五、软件目录规范"><a href="#五、软件目录规范" class="headerlink" title="五、软件目录规范"></a>五、软件目录规范</h2><p><img src="\images\软件目录规范.jpg" alt="软件目录规范.jpg"></p>
+</code></pre><h1 id="软件目录规范"><a href="#软件目录规范" class="headerlink" title="软件目录规范"></a>软件目录规范</h1><p><img src="\images\软件目录规范.jpg" alt="软件目录规范.jpg"></p>
 
       
     </div>
@@ -787,6 +787,10 @@ print(data[&apos;func&apos;](&quot;Alex&quot;))
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/14/Python3.5学习（五）/" rel="prev" title="Python3.5学习（五）">
+                Python3.5学习（五） <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -866,7 +870,7 @@ print(data[&apos;func&apos;](&quot;Alex&quot;))
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-count">7</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -960,7 +964,7 @@ print(data[&apos;func&apos;](&quot;Alex&quot;))
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#知识点"><span class="nav-number">1.</span> <span class="nav-text">知识点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一、装饰器"><span class="nav-number">2.</span> <span class="nav-text">一、装饰器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-定义"><span class="nav-number">2.1.</span> <span class="nav-text">1. 定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-原则"><span class="nav-number">2.2.</span> <span class="nav-text">2. 原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-储备知识"><span class="nav-number">2.3.</span> <span class="nav-text">3. 储备知识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-实现装饰器过程1"><span class="nav-number">2.4.</span> <span class="nav-text">4. 实现装饰器过程1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-实现装饰器过程2"><span class="nav-number">2.5.</span> <span class="nav-text">5. 实现装饰器过程2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-实现装饰器过程3"><span class="nav-number">2.6.</span> <span class="nav-text">6. 实现装饰器过程3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-通用装饰器"><span class="nav-number">2.7.</span> <span class="nav-text">7. 通用装饰器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-装饰器传参"><span class="nav-number">2.8.</span> <span class="nav-text">8. 装饰器传参</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、生成器"><span class="nav-number">3.</span> <span class="nav-text">二、生成器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-特点"><span class="nav-number">3.1.</span> <span class="nav-text">1. 特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-实例分析：斐波那契生成器"><span class="nav-number">3.2.</span> <span class="nav-text">2. 实例分析：斐波那契生成器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-生成器并行"><span class="nav-number">3.3.</span> <span class="nav-text">3. 生成器并行</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、迭代器"><span class="nav-number">4.</span> <span class="nav-text">三、迭代器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四、json与pickle序列化"><span class="nav-number">5.</span> <span class="nav-text">四、json与pickle序列化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-json序列化"><span class="nav-number">5.1.</span> <span class="nav-text">1. json序列化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-json去序列化"><span class="nav-number">5.2.</span> <span class="nav-text">2. json去序列化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-pickle序列化"><span class="nav-number">5.3.</span> <span class="nav-text">3. pickle序列化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-pickle反序列化"><span class="nav-number">5.4.</span> <span class="nav-text">4. pickle反序列化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、软件目录规范"><span class="nav-number">5.5.</span> <span class="nav-text">五、软件目录规范</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#知识点"><span class="nav-number">1.</span> <span class="nav-text">知识点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#装饰器"><span class="nav-number">2.</span> <span class="nav-text">装饰器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-定义"><span class="nav-number">2.1.</span> <span class="nav-text">1. 定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-原则"><span class="nav-number">2.2.</span> <span class="nav-text">2. 原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-储备知识"><span class="nav-number">2.3.</span> <span class="nav-text">3. 储备知识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-实现装饰器过程1"><span class="nav-number">2.4.</span> <span class="nav-text">4. 实现装饰器过程1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-实现装饰器过程2"><span class="nav-number">2.5.</span> <span class="nav-text">5. 实现装饰器过程2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-实现装饰器过程3"><span class="nav-number">2.6.</span> <span class="nav-text">6. 实现装饰器过程3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-通用装饰器"><span class="nav-number">2.7.</span> <span class="nav-text">7. 通用装饰器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-装饰器传参"><span class="nav-number">2.8.</span> <span class="nav-text">8. 装饰器传参</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#生成器"><span class="nav-number">3.</span> <span class="nav-text">生成器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-特点"><span class="nav-number">3.1.</span> <span class="nav-text">1. 特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-实例分析：斐波那契生成器"><span class="nav-number">3.2.</span> <span class="nav-text">2. 实例分析：斐波那契生成器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-生成器并行"><span class="nav-number">3.3.</span> <span class="nav-text">3. 生成器并行</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#迭代器"><span class="nav-number">4.</span> <span class="nav-text">迭代器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#json与pickle序列化"><span class="nav-number">5.</span> <span class="nav-text">json与pickle序列化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-json序列化"><span class="nav-number">5.1.</span> <span class="nav-text">1. json序列化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-json去序列化"><span class="nav-number">5.2.</span> <span class="nav-text">2. json去序列化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-pickle序列化"><span class="nav-number">5.3.</span> <span class="nav-text">3. pickle序列化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-pickle反序列化"><span class="nav-number">5.4.</span> <span class="nav-text">4. pickle反序列化</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#软件目录规范"><span class="nav-number">6.</span> <span class="nav-text">软件目录规范</span></a></li></ol></div>
             
 
           </div>

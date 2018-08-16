@@ -108,7 +108,7 @@
 <meta property="og:description" content="知识点 列表 元组 字符串 字典 集合 文件操作 字符编码">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://5ifish.me/images/字符编码转化图.jpg">
-<meta property="og:updated_time" content="2018-07-15T12:27:21.166Z">
+<meta property="og:updated_time" content="2018-08-14T11:55:59.761Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python3.5学习（二）">
 <meta name="twitter:description" content="知识点 列表 元组 字符串 字典 集合 文件操作 字符编码">
@@ -380,7 +380,7 @@
               
                 <span class="post-meta-item-text">更新于：</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-07-15T20:27:21+08:00">2018-07-15</time>
+              <time title="更新于" itemprop="dateModified" datetime="2018-08-14T19:55:59+08:00">2018-08-14</time>
             
           </span>
 
@@ -449,7 +449,7 @@
 </ul>
 <a id="more"></a> 
 <hr>
-<h1 id="一、列表"><a href="#一、列表" class="headerlink" title="一、列表"></a>一、列表</h1><pre><code>names = &quot;ZhangYang Guyun Xiangpeng XuLiangChen&quot;
+<h1 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h1><pre><code>names = &quot;ZhangYang Guyun Xiangpeng XuLiangChen&quot;
 #创建列表[]
 names = [&quot;ZhangYang&quot;,&quot;Guyun&quot;,&quot;XiangPeng&quot;,&quot;XuLiangchen&quot;]
 </code></pre><h2 id="1-增删改查"><a href="#1-增删改查" class="headerlink" title="1. 增删改查"></a>1. 增删改查</h2><p>增</p>
@@ -541,12 +541,12 @@ names.sort()
 names.extend(names2)
 #del names2删除列表变量
 </code></pre><hr>
-<h1 id="二、元组"><a href="#二、元组" class="headerlink" title="二、元组"></a>二、元组</h1><p>元组不希望被修改，且只有两种用法：</p>
+<h1 id="元组"><a href="#元组" class="headerlink" title="元组"></a>元组</h1><p>元组不希望被修改，且只有两种用法：</p>
 <pre><code>names = (&apos;alex&apos;,&apos;jack&apos;)
 #index:查找,count:计数
 print(names.index(&apos;alex&apos;),names.count(&apos;jack&apos;))
 </code></pre><hr>
-<h1 id="三、实例一：购物车"><a href="#三、实例一：购物车" class="headerlink" title="三、实例一：购物车"></a>三、实例一：购物车</h1><p>需求：</p>
+<h1 id="实例一：购物车"><a href="#实例一：购物车" class="headerlink" title="实例一：购物车"></a>实例一：购物车</h1><p>需求：</p>
 <ol>
 <li>启动程序后，让用户输入工资，然后打印商品列表</li>
 <li>允许用户根据商品编号购买商品</li>
@@ -632,7 +632,7 @@ if salary.isdigit():
 else:
     print(&quot;error:please input digit!!&quot;)
 </code></pre><hr>
-<h1 id="四、字符串"><a href="#四、字符串" class="headerlink" title="四、字符串"></a>四、字符串</h1><pre><code>name = &quot;zhangsan,my name is {name},and I&apos;m {year} years old&quot;
+<h1 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h1><pre><code>name = &quot;zhangsan,my name is {name},and I&apos;m {year} years old&quot;
 
 #将字符串首字母大写
 print(name.capitalize())
@@ -681,7 +681,7 @@ print(&apos;zhangsan&apos;.replace(&apos;z&apos;,&apos;Z&apos;,1))
 #将指定字符作为分割符分割字符串形成列表
 print(&apos;zhangsan&apos;.split(&apos;a&apos;))
 </code></pre><hr>
-<h1 id="五、字典"><a href="#五、字典" class="headerlink" title="五、字典"></a>五、字典</h1><h2 id="1-创建字典"><a href="#1-创建字典" class="headerlink" title="1. 创建字典"></a>1. 创建字典</h2><pre><code>#字典：key-value
+<h1 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h1><h2 id="1-创建字典"><a href="#1-创建字典" class="headerlink" title="1. 创建字典"></a>1. 创建字典</h2><pre><code>#字典：key-value
 info = {
     &apos;stu1101&apos;:&quot;Zhang San&quot;,
     &apos;stu1102&apos;:&quot;Li Si&quot;,
@@ -734,7 +734,7 @@ for i in info:
 for k,v in info.items():
     print(k,v)
 </code></pre><hr>
-<h1 id="六、实例二：三级菜单"><a href="#六、实例二：三级菜单" class="headerlink" title="六、实例二：三级菜单"></a>六、实例二：三级菜单</h1><p>主要依靠多级字典实现</p>
+<h1 id="实例二：三级菜单"><a href="#实例二：三级菜单" class="headerlink" title="实例二：三级菜单"></a>实例二：三级菜单</h1><p>主要依靠多级字典实现</p>
 <pre><code># Author:ZT
 city_map = {
     &quot;辽宁省&quot;:{
@@ -796,7 +796,7 @@ while exit_mark:
             elif choice2 == &quot;q&quot;:
                 exit_mark = False
 </code></pre><hr>
-<h1 id="七、集合"><a href="#七、集合" class="headerlink" title="七、集合"></a>七、集合</h1><p>集合重要的两个作用：</p>
+<h1 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h1><p>集合重要的两个作用：</p>
 <ol>
 <li>去重</li>
 <li>关系测试</li>
@@ -854,7 +854,7 @@ print(list_1)
 YorN = 1 in list_1
 print(YorN)
 </code></pre><hr>
-<h1 id="八、文件操作"><a href="#八、文件操作" class="headerlink" title="八、文件操作"></a>八、文件操作</h1><p>现有一文件实例yesterday.txt：</p>
+<h1 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h1><p>现有一文件实例yesterday.txt：</p>
 <pre><code>Oh, yesterday when I was young
 噢 昨日当我年少轻狂
 So many, many songs were waiting to be sung
@@ -977,7 +977,7 @@ for i in range(20):
     sys.stdout.flush()
     time.sleep(0.5)
 </code></pre><hr>
-<h1 id="九、字符编码"><a href="#九、字符编码" class="headerlink" title="九、字符编码"></a>九、字符编码</h1><p><img src="/images/字符编码转化图.jpg" alt="字符编码转换图"></p>
+<h1 id="字符编码"><a href="#字符编码" class="headerlink" title="字符编码"></a>字符编码</h1><p><img src="/images/字符编码转化图.jpg" alt="字符编码转换图"></p>
 <p>当编译语言使用系统默认编码(uft-8)时：</p>
 <pre><code># Author:ZT
 &apos;&apos;&apos;
@@ -1016,7 +1016,7 @@ print(s.encode(&quot;utf-8&quot;).decode(&quot;utf-8&quot;).encode(&quot;gb2312&
 #编码成utf-8-&gt;解码-&gt;编码成gb2312-&gt;解码，最终为unicode
 print(s.encode(&quot;utf-8&quot;).decode(&quot;utf-8&quot;).encode(&quot;gb2312&quot;).decode(&quot;gb2312&quot;))
 </code></pre><hr>
-<h1 id="十、作业"><a href="#十、作业" class="headerlink" title="十、作业"></a>十、作业</h1><h2 id="作业一-优化购物车"><a href="#作业一-优化购物车" class="headerlink" title="作业一:优化购物车"></a>作业一:优化购物车</h2><p>需求：</p>
+<h1 id="作业"><a href="#作业" class="headerlink" title="作业"></a>作业</h1><h2 id="作业一-优化购物车"><a href="#作业一-优化购物车" class="headerlink" title="作业一:优化购物车"></a>作业一:优化购物车</h2><p>需求：</p>
 <p>用户入口：</p>
 <ol>
 <li>商品信息存在文件中</li>
@@ -1803,7 +1803,7 @@ while True:
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-count">7</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1897,7 +1897,7 @@ while True:
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#知识点"><span class="nav-number">1.</span> <span class="nav-text">知识点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一、列表"><span class="nav-number">2.</span> <span class="nav-text">一、列表</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-增删改查"><span class="nav-number">2.1.</span> <span class="nav-text">1. 增删改查</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-切片"><span class="nav-number">2.2.</span> <span class="nav-text">2. 切片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-copy"><span class="nav-number">2.3.</span> <span class="nav-text">3. copy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-其他操作"><span class="nav-number">2.4.</span> <span class="nav-text">4. 其他操作</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、元组"><span class="nav-number">3.</span> <span class="nav-text">二、元组</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、实例一：购物车"><span class="nav-number">4.</span> <span class="nav-text">三、实例一：购物车</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四、字符串"><span class="nav-number">5.</span> <span class="nav-text">四、字符串</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#五、字典"><span class="nav-number">6.</span> <span class="nav-text">五、字典</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-创建字典"><span class="nav-number">6.1.</span> <span class="nav-text">1. 创建字典</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-增加"><span class="nav-number">6.2.</span> <span class="nav-text">2. 增加</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-修改"><span class="nav-number">6.3.</span> <span class="nav-text">3. 修改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-删除"><span class="nav-number">6.4.</span> <span class="nav-text">4. 删除</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-查询"><span class="nav-number">6.5.</span> <span class="nav-text">5. 查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-其他操作"><span class="nav-number">6.6.</span> <span class="nav-text">6. 其他操作</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#六、实例二：三级菜单"><span class="nav-number">7.</span> <span class="nav-text">六、实例二：三级菜单</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#七、集合"><span class="nav-number">8.</span> <span class="nav-text">七、集合</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-集合的创建"><span class="nav-number">8.1.</span> <span class="nav-text">1. 集合的创建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-集合运算"><span class="nav-number">8.2.</span> <span class="nav-text">2. 集合运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-集合的增删改查"><span class="nav-number">8.3.</span> <span class="nav-text">3. 集合的增删改查</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#八、文件操作"><span class="nav-number">9.</span> <span class="nav-text">八、文件操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-打开"><span class="nav-number">9.1.</span> <span class="nav-text">1. 打开</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-读"><span class="nav-number">9.2.</span> <span class="nav-text">2. 读</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-写"><span class="nav-number">9.3.</span> <span class="nav-text">3. 写</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-修改"><span class="nav-number">9.4.</span> <span class="nav-text">4. 修改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-例子"><span class="nav-number">9.5.</span> <span class="nav-text">5. 例子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-tell、seek"><span class="nav-number">9.6.</span> <span class="nav-text">6. tell、seek</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-其他功能"><span class="nav-number">9.7.</span> <span class="nav-text">7. 其他功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-制作进度条"><span class="nav-number">9.8.</span> <span class="nav-text">8. 制作进度条</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#九、字符编码"><span class="nav-number">10.</span> <span class="nav-text">九、字符编码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#十、作业"><span class="nav-number">11.</span> <span class="nav-text">十、作业</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#作业一-优化购物车"><span class="nav-number">11.1.</span> <span class="nav-text">作业一:优化购物车</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#作业二"><span class="nav-number">11.2.</span> <span class="nav-text">作业二</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#作业三：修改haproxy配置文件"><span class="nav-number">11.3.</span> <span class="nav-text">作业三：修改haproxy配置文件</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#知识点"><span class="nav-number">1.</span> <span class="nav-text">知识点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#列表"><span class="nav-number">2.</span> <span class="nav-text">列表</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-增删改查"><span class="nav-number">2.1.</span> <span class="nav-text">1. 增删改查</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-切片"><span class="nav-number">2.2.</span> <span class="nav-text">2. 切片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-copy"><span class="nav-number">2.3.</span> <span class="nav-text">3. copy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-其他操作"><span class="nav-number">2.4.</span> <span class="nav-text">4. 其他操作</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#元组"><span class="nav-number">3.</span> <span class="nav-text">元组</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实例一：购物车"><span class="nav-number">4.</span> <span class="nav-text">实例一：购物车</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#字符串"><span class="nav-number">5.</span> <span class="nav-text">字符串</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#字典"><span class="nav-number">6.</span> <span class="nav-text">字典</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-创建字典"><span class="nav-number">6.1.</span> <span class="nav-text">1. 创建字典</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-增加"><span class="nav-number">6.2.</span> <span class="nav-text">2. 增加</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-修改"><span class="nav-number">6.3.</span> <span class="nav-text">3. 修改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-删除"><span class="nav-number">6.4.</span> <span class="nav-text">4. 删除</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-查询"><span class="nav-number">6.5.</span> <span class="nav-text">5. 查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-其他操作"><span class="nav-number">6.6.</span> <span class="nav-text">6. 其他操作</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实例二：三级菜单"><span class="nav-number">7.</span> <span class="nav-text">实例二：三级菜单</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#集合"><span class="nav-number">8.</span> <span class="nav-text">集合</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-集合的创建"><span class="nav-number">8.1.</span> <span class="nav-text">1. 集合的创建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-集合运算"><span class="nav-number">8.2.</span> <span class="nav-text">2. 集合运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-集合的增删改查"><span class="nav-number">8.3.</span> <span class="nav-text">3. 集合的增删改查</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文件操作"><span class="nav-number">9.</span> <span class="nav-text">文件操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-打开"><span class="nav-number">9.1.</span> <span class="nav-text">1. 打开</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-读"><span class="nav-number">9.2.</span> <span class="nav-text">2. 读</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-写"><span class="nav-number">9.3.</span> <span class="nav-text">3. 写</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-修改"><span class="nav-number">9.4.</span> <span class="nav-text">4. 修改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-例子"><span class="nav-number">9.5.</span> <span class="nav-text">5. 例子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-tell、seek"><span class="nav-number">9.6.</span> <span class="nav-text">6. tell、seek</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-其他功能"><span class="nav-number">9.7.</span> <span class="nav-text">7. 其他功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-制作进度条"><span class="nav-number">9.8.</span> <span class="nav-text">8. 制作进度条</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#字符编码"><span class="nav-number">10.</span> <span class="nav-text">字符编码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#作业"><span class="nav-number">11.</span> <span class="nav-text">作业</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#作业一-优化购物车"><span class="nav-number">11.1.</span> <span class="nav-text">作业一:优化购物车</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#作业二"><span class="nav-number">11.2.</span> <span class="nav-text">作业二</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#作业三：修改haproxy配置文件"><span class="nav-number">11.3.</span> <span class="nav-text">作业三：修改haproxy配置文件</span></a></li></ol></li></ol></div>
             
 
           </div>
